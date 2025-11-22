@@ -14,7 +14,18 @@ fun readNumber(reader : BufferedReader) : Int? {
     }
 }
 
+/*
+    Hangi exception’ları handle etmek isteyip istemediğinize kendiniz karar verirsiniz. İsterseniz, readNumber
+    fonksiyonunu tamamen try-catch yapıları olmadan da implemente edebilirsiniz.
+*/
+fun readNumberWithoutExceptionHandling(reader : BufferedReader) : Int{
+    val line = reader.readLine()
+    reader.close()
+    return Integer.parseInt(line)
+}
+
 fun main() {
     val reader = BufferedReader(StringReader("asd"))
     println(readNumber(reader))
+    println(readNumberWithoutExceptionHandling(reader))
 }
