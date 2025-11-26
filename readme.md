@@ -26,3 +26,26 @@
 
 * Kotlin’de exception handling Java’ya çok benzerdir, fark olarak Kotlin, bir function’ın fırlatabileceği exception’ları
   declare etmenizi gerektirmez.
+
+# Chapter 3
+
+Kotlin, Java collection class’larını daha zengin bir API ile geliştirir.
+
+* Function parameter’ları için default value’lar tanımlamak, overloaded function tanımlama ihtiyacını büyük ölçüde
+  azaltır ve named-argument syntax, çok sayıda parameter’a sahip function’ların çağrılarını çok daha okunabilir hale
+  getirir.
+
+* Function ve property’ler yalnızca bir class üyesi olarak değil, doğrudan bir file içinde de declare edilebilir; bu,
+  daha esnek bir code yapısı sağlar.
+
+* Extension function’lar ve property’ler, source code’unu değiştirmeden ve runtime overhead olmadan, external
+  library’lerde tanımlı class’lar da dahil olmak üzere herhangi bir class’ın API’sını genişletmenizi sağlar.
+
+* Infix call’lar, tek bir argument alan operator-benzeri method’ları çağırmak için temiz bir syntax sağlar.
+
+* Kotlin, hem regular expression hem de plain string’ler için çok sayıda kullanışlı string-handling function sunar.
+
+* Triple-quoted string’ler, Java’da çok fazla escape ve string concatenation gerektirecek ifadeleri yazmanın temiz bir
+  yolunu sağlar.
+
+* Local function’lar, code’unuzu daha temiz yapılandırmanıza ve duplication’ı ortadan kaldırmanıza yardımcı olur.
