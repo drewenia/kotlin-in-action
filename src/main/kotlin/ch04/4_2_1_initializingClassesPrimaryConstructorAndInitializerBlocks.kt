@@ -78,7 +78,7 @@ sağlayarak yapabilirsiniz:
 
 open class UserV5(val nickname : String)
 
-class SocialUser(nickname : String) : UserV5(nickname)
+class SocialUserV5(nickname : String) : UserV5(nickname)
 
 /* Eğer bir class için herhangi bir constructor declare etmezseniz, sizin için hiçbir şey yapmayan parametresiz bir
 default constructor generate edilir:
