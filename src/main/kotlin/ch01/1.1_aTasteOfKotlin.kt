@@ -25,9 +25,11 @@ package ch01
 */
 
 data class PersonData(val name: String, val age: Int? = null)
+data class Vts (val name : String? = null, val ipAddress : String)
 
 // val -> readonly property
 // Nullable type (Int?) — argument için default değer
+// Nullable type (String?) - argument içinde default değer
 
 fun main() {
     val persons = listOf(
@@ -37,6 +39,11 @@ fun main() {
     val oldest = persons.maxBy { it.age ?: 0 }
     println("The oldest : $oldest")
     println(persons.toString()) // [PersonData(name=Alice, age=40), PersonData(name=Bob, age=null)]
+
+    /* Burada name nullable ve default value olarak null verilmiş. Yani name parametresini atlaman mümkün. Ama ipAddress
+    parametresi default value almıyor, yani object creation sırasında mutlaka sağlanması gerekiyor. Kotlin sırayla
+    parametreleri eşler. Name'i vermediğimiz için Named Argument kullanmak zorunludur */
+    val vts = Vts(ipAddress = "10.0.0.101")
 }
 
 /*
