@@ -1,3 +1,32 @@
+# Chapter 1
+
+Kotlin statically typed’dir ve type inference’i destekler; bu sayede source code’u concise tutarken doğruluk ve
+performansı koruyabilir.
+
+* Kotlin, hem object-oriented hem de functional programming style’larını destekler; first-class function’lar
+  aracılığıyla daha yüksek seviyeli abstraction’lar sağlar ve immutable value desteği sayesinde testing ve multithreaded
+  development’i basitleştirir.
+
+* Coroutines, thread’lere hafif bir alternatif sunar ve asenkron code’u doğal hissettirmeye yardımcı olur; böylece,
+  mantığı sequential code’a benzer şekilde yazabilir ve concurrent code’u parent–child ilişkileri içinde
+  yapılandırabilirsiniz.
+
+* Kotlin, server-side application’lar için uygundur; Ktor ve http4k gibi Kotlin-first framework’ler ve Spring Boot gibi
+  mevcut tüm Java framework’lerini tam olarak destekler.
+
+* Android, Kotlin-first’tir; development tool’lar, library’ler, sample’lar ve dokümantasyon ağırlıklı olarak Kotlin’e
+  odaklanır.
+
+* Kotlin Multiplatform, Kotlin code’unuzu JVM dışındaki target’lara, iOS ve web dahil, taşır.
+
+* Kotlin ücretsiz ve open source’dur; birden fazla build system ve IDE’yi destekler.
+
+* Otomatik Java-to-Kotlin converter, mevcut code’unuzu ve bilginizi Kotlin’e taşımanıza olanak tanır.
+
+* Kotlin pragmatik, safe, concise ve interoperable’dır; yani yaygın görevler için kanıtlanmış çözümleri kullanmaya
+  odaklanır, NullPointerException gibi yaygın hataları önler, kompakt ve kolay okunabilir code sağlar ve Java ile
+  sınırsız entegrasyon sunar.
+
 # Chapter 2
 
 * Fun keyword’ü bir function declare etmek için kullanılır. Val ve var keyword’leri sırasıyla read-only ve mutable

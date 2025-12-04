@@ -1,5 +1,8 @@
 plugins {
     kotlin("jvm") version "2.2.20"
+    id("org.springframework.boot") version "4.0.0"
+    id("io.spring.dependency-management") version "1.1.4"
+    kotlin("plugin.spring") version "1.9.22"
 }
 
 group = "io.drewenia"
@@ -11,6 +14,8 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
+    implementation("org.springframework.boot:spring-boot-starter-web")
+
 }
 
 tasks.test {

@@ -1,0 +1,18 @@
+package ch01
+
+/* Kotlin, nullable data’yı handle etmek adına birçok kullanışlı yol sağlar. Bu da application crash’lerini ortadan
+kaldırmada büyük ölçüde yardımcı olur. Kotlin’in yardımcı olduğu bir diğer exception türü ise class cast exception’dır;
+bu, bir object’i doğru type’a sahip olup olmadığını kontrol etmeden bir type’a cast ettiğinizde meydana gelir. Kotlin,
+check ve cast işlemini tek bir operation’da birleştirir. Bu, type’ı bir kez kontrol ettikten sonra, ek cast,
+redeclaration veya check gerekmeden o type’ın member’larına başvurabileceğiniz anlamına gelir. Bu örnekte, **is**
+operatörü Any type’ında olabilen value variable’ı üzerinde bir type check gerçekleştirir. Compiler, koşulun true
+dalında value’nun String type’ında olması gerektiğini bildiğinden, o type’ın method’larının güvenle kullanılmasına izin
+verir. Buna smart-cast adı verilir */
+
+fun modifySmartCast(value : Any){
+    // is ile type check edilir
+    if (value is String){
+        // Ek cast gerektirmeden String üzerinde çağrılabilir bir method kullanır.
+        println(value.uppercase())
+    }
+}

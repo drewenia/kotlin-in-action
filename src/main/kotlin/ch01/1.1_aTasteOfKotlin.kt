@@ -1,0 +1,83 @@
+package ch01
+
+/*
+* Body belirtmeye gerek olmadan property’lere sahip bir Person data class tanımlamak
+
+* Val keyword’ü ile read-only property’ler (name ve age) declare etmek
+
+* Argümanlar için default değerler sağlamak
+
+* Type system’de nullable değerlerle (Int?) explicit çalışmak, NullPointerException gibi “billion-dollar mistake”lerden kaçınmak
+
+* Function’ları class içine nested etmeden top-level olarak tanımlamak
+
+* Function ve constructor çağrılarında named argument kullanmak
+
+* Trailing comma kullanmak
+
+* Lambda expression’lar ile collection operation’larını kullanmak
+
+* Variable null ise Elvis operator (?:) ile fallback değer sağlamak
+
+* Manual concatenation yerine string template kullanmak
+
+* Data class’lar için otomatik oluşturulan function’ları kullanmak, örneğin toString
+*/
+
+data class PersonData(val name: String, val age: Int? = null)
+
+// val -> readonly property
+// Nullable type (Int?) — argument için default değer
+
+fun main() {
+    val persons = listOf(
+        PersonData("Alice", age = 40),
+        PersonData("Bob")
+    )
+    val oldest = persons.maxBy { it.age ?: 0 }
+    println("The oldest : $oldest")
+    println(persons.toString()) // [PersonData(name=Alice, age=40), PersonData(name=Bob, age=null)]
+}
+
+/*
+    age -> named argument olarak geçer
+    persons.maxBy -> lambda expression
+    ?: -> Null-coalescing Elvis operator
+    ("The oldest : $oldest") -> String template
+*/
+
+/* İlk Kotlin code snippet’imiz, Kotlin’de bir collection nasıl oluşturulur, bazı Person object’leri ile nasıl
+doldurulur ve ardından age belirtilmeyenler için default değerleri kullanarak collection’daki en yaşlı kişiyi nasıl
+bulabileceğinizi gösterir. İnsanlar listesini oluştururken, Bob’un age’i belirtilmediği için null varsayılan değer
+olarak kullanılır. Listedeki en yaşlı kişiyi bulmak için maxBy function’ı kullanılır. Function’a geçirilen lambda
+expression, varsayılan olarak **it** adıyla tek bir parametre alır (isterseniz parametreye başka isim de
+verebilirsiniz). Elvis operator (?:), age null ise sıfır döndürür. Bob’un age’i belirtilmediği için Elvis operator bunu
+sıfır ile değiştirir ve böylece Alice en yaşlı kişi olarak ödülü kazanır.*/
+
+/* Kotlin’de **it**, lambda expression'lar da tek bir parametre olduğunda compiler tarafından otomatik olarak
+oluşturulan isimdir. Yani, lambda’ya bir parametre verirseniz, onu yazmak zorunda değilsiniz; it otomatik olarak o
+parametreyi represent eder.*/
+
+/*
+
+val numbers = listOf(1, 2, 3, 4, 5)
+
+// Tek parametreli lambda, it kullanımı
+val doubled = numbers.map { it * 2 }
+println(doubled) // [2, 4, 6, 8, 10]
+
+*/
+
+/* Burada map fonksiyonuna verilen lambda, listedeki her bir elementi represent ediyor. Parametreyi belirtmesek de,
+Kotlin otomatik olarak **it** diye adlandırıyor. Eğer lambda’nın birden fazla parametresi varsa **it** kullanılamaz,
+parametreleri kendiniz yazmanız gerekir:*/
+
+/*
+
+val pairs = listOf(1 to "a", 2 to "b")
+
+// İki parametre olduğu için it kullanamayız
+val keys = pairs.map { pair -> pair.first }
+println(keys) // [1, 2]
+
+*/
