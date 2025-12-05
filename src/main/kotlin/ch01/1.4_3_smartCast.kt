@@ -16,3 +16,12 @@ fun modifySmartCast(value : Any){
         println(value.uppercase())
     }
 }
+
+fun smartCaseExample(value : Any) : Any{
+    if (value is String){
+        return "this is a String ${value.plus(" ,World!")}"
+    }
+
+    if (value is Number) return value.toByte()
+    return IllegalArgumentException("Unknown type")
+}
