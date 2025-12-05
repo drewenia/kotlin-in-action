@@ -38,4 +38,25 @@ class GreetingController{
     )
 }
 
+@RestController
+class SayHelloController{
+    @GetMapping("/hello")
+    fun sayHello() : String{
+        return "Hello from kotlin"
+    }
+
+    @GetMapping("v1")
+    fun returnMap() : Map<String,Int> {
+        val phones = listOf(
+            MobilePhoneDeriver("Iphone 11", 21000),
+            MobilePhoneDeriver("Iphone 13", 31000)
+        )
+
+        // associate list'den otomatik olarak map üretir
+        return phones.associate { it.name to it.price }
+    }
+
+}
+
 data class GreetingDeriver(val id : Int, val greeting : String)
+data class MobilePhoneDeriver(val name : String, var price : Int)
