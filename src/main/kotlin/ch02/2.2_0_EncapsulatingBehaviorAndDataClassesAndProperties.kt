@@ -1,0 +1,29 @@
+package ch02
+
+// Basit bir java class'ına bakarak başlayalım
+/*
+public class Person {
+    private final String name;
+
+    public Person(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+*/
+
+/* Java’da bunun oldukça uzun bir kod gerektirdiğini görebilirsiniz. Constructor gövdesi tamamen tekrar niteliğindedir,
+çünkü yalnızca parametreleri aynı isimlere sahip field’lara assign eder. Gelenek gereği, name field’ına erişmek için
+Person class’ının ayrıca getName getter function’ını sağlaması gerekir; bu function da yalnızca field’ın içeriğini
+döndürür. Bu tür tekrarlar Java’da sıkça görülür. Kotlin’de ise bu mantık bu kadar fazla boilerplate olmadan ifade
+edilebilir. */
+
+class Person22(val name : String)
+
+/* Eğer başka bir modern object-oriented dil denediyseniz, benzer bir şey görmüş olabilirsiniz. Gördüğünüz gibi, Kotlin
+classes declare etmek için özellikle yalnızca data içeren fakat hiç kod içermeyen classes için oldukça kısa bir
+sözdizimi sunar. Java’dan Kotlin’e dönüşüm sırasında public modifier’ının ortadan kaybolduğuna dikkat edin. Kotlin’de
+public varsayılan visibility’dir, bu yüzden onu yazmadan geçebilirsiniz. */
