@@ -1,0 +1,51 @@
+package ch02
+
+/* Eğer user, standard input üzerinden bir name belirtirse, program greeting içinde onu kullanır. User herhangi bir
+input sağlamazsa, bu durumda tüm Kotlin’i selamlamanız gerekecek. Böyle bir greeting program aşağıdaki gibi görünebilir
+ve daha önce görmediğiniz bazı feature’ları gösterir.*/
+
+fun main() {
+    val input = readln()
+    val name = input.ifEmpty { "Kotlin" }
+    println("Hello, $name")
+
+    // Eğer bir string içinde **$** karakterini kullanmanız gerekiyorsa, bunu bir backslash ile escape edersiniz:
+    println("\$x")
+    sayHello216()
+    sayHello216v2()
+}
+
+/* Bu example, string templates adı verilen bir feature’ı tanıtır ve ayrıca basit user input’unun nasıl okunabileceğine
+dair kısa bir örnek gösterir. Code içinde, standard input stream’den readln() function’ı aracılığıyla input okursun
+(bu function, diğerleriyle birlikte herhangi bir Kotlin file’ında mevcuttur). Daha sonra bir variable name declare
+edersin ve değerini bir if expression kullanarak initialize edersin. Eğer standard input mevcutsa ve empty değilse,
+name değişkenine input’un değeri assign edilir. Aksi halde, default value olan "Kotlin" assign edilir. Son olarak,
+bunu println’a geçirilen string literal içinde kullanırsın. Birçok scripting language’da olduğu gibi, Kotlin de string
+literal’lar içinde local variable’lara **$** karakterini variable name’in önüne koyarak refer etmene izin verir. Bu,
+Java’nın string concatenation işlemiyle ("Hello, " + name + "!") eşdeğerdir ancak daha kompakt ve aynı derecede
+verimlidir. Ve elbette, expression’lar statically checked edilir ve var olmayan bir variable’a refer etmeye çalışırsan
+code compile olmaz. JVM 1.8 target’ları için, derlenen code bir StringBuilder oluşturur ve sabit kısımları ile variable
+value’larını ona ekler. JVM 9 veya üzerini target eden application’lar ise string concatenation işlemelerini
+invokedynamic aracılığıyla daha verimli dynamic invocation’lara compile eder. */
+
+/* Kotlin’de string template’leri oldukça güçlüdür, çünkü yalnızca bireysel variable’lara referans vermekle sınırlı
+değillerdir. Eğer selamlamanızın biraz daha maceralı olmasını ve kullanıcıyı isminin uzunluğuyla selamlamasını
+istiyorsanız, string template içinde daha karmaşık bir expression da sağlayabilirsiniz. Bunun için tek gereken,
+expression’ı süslü parantezler içine koymaktır. */
+
+fun sayHello216(){
+    val input = readln()
+    val name = input.ifEmpty { "Kotlin" }
+    if (name.isNotBlank()){
+        println("Hello, your name is ${name.length} character long")
+    }
+}
+
+/* Artık string template’lerinin içine rastgele expression’lar ekleyebilirsiniz ve if’in Kotlin’de bir expression
+olduğunu zaten biliyordunuz. İkisini birleştirerek, selamlama programınızı koşulu doğrudan string template’in içine
+dahil edecek şekilde yeniden yazabilirsiniz. */
+
+fun sayHello216v2(){
+    val name = readln()
+    println("Hello, ${name.ifEmpty { "Kotlin" }}")
+}
