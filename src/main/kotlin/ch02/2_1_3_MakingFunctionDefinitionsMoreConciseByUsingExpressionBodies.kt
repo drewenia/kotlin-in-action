@@ -1,0 +1,28 @@
+package ch02
+
+/* Aslında, max fonksiyonunuzu daha da kısa hâle getirebilirsiniz. Fonksiyonun body'si tek bir expression’dan oluştuğu
+için (if (a > b) a else b), bu expression’ı fonksiyonun tamamı olarak kullanabilir, süslü parantezleri ve return
+statement’ını kaldırabilirsiniz. Bunun yerine, tek expression’ı eşittir işaretinin (=) hemen sonrasına
+koyabilirsiniz.*/
+
+fun max213(a: Int, b: Int): Int = if (a > b) a else b
+
+/* Bir fonksiyonun body'si süslü parantezlerle yazılmışsa, bu fonksiyonun bir block body’si olduğu söylenir. Bir
+expression’ı doğrudan döndürüyorsa, expression body’si vardır. Expression body, fonksiyonların if, when veya try gibi
+tek bir ama daha complex bir expression değerlendirdiği durumlarda da kullanılır. max213 function'ını daha da
+sadeleştirebiliriz.
+*/
+
+fun max213v2(a: Int, b: Int) = if (a == b) a else b
+
+/* İlk bakışta bu durum size şaşırtıcı gelebilir. Return-type declaration’ı olmadan fonksiyonlar nasıl olabilir?
+Kotlin’in statically typed bir dil olduğunu zaten öğrendiniz — öyleyse her expression’ın compile time’da bir type’a
+sahip olması gerekmez mi? Gerçekten de, her variable’ın ve her expression’ın bir type’ı vardır ve her fonksiyonun bir
+return type’ı bulunur. Ancak expression-body fonksiyonlarında, compiler fonksiyonun gövdesi olarak kullanılan
+expression’ı analiz edebilir ve explicit olarak belirtilmemiş olsa bile bu expression’ın type’ını fonksiyonun return
+type’ı olarak kullanabilir. Bu tür bir analiz genellikle **type inference** olarak adlandırılır. Return type’ı atlamanın
+yalnızca expression body’ye sahip fonksiyonlar için geçerli olduğunu unutmayın. Bir value döndüren block body’li
+fonksiyonlarda, return type’ı belirtmeniz ve return statement’larını açıkça yazmanız gerekir. Bu bilinçli bir tercihtir.
+Gerçek hayattaki fonksiyonlar çoğu zaman uzundur ve birden fazla return statement içerir; return type’ın ve return
+statement’larının açıkça yazılması, hangi value’ların dönebileceğini hızlıca kavramanıza yardımcı olur.
+*/

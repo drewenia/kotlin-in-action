@@ -9,11 +9,11 @@ Return type ise parameter listesinden sonra gelir ve ondan bir colon ile ayrıl�
 üreten bir expression olduğunu unutmayın. if’i, branch'lerinin birinden bir value döndüren bir yapı olarak
 düşünebilirsiniz. */
 
-fun max(a: Int, b: Int): Int {
+fun max212(a: Int, b: Int): Int {
     return if (a > b) a else b
 }
 
-fun isEven(a: Int): Boolean {
+fun isEven212(a: Int): Boolean {
     return a % 2 == 0
 }
 
@@ -24,11 +24,11 @@ element uygulamanıza iletilen bir komut satırı parameter’ına karşılık g
 herhangi bir value döndürmez. */
 
 fun main(){
-    val maxValue = max(11,22)
-    val valueIsEven = isEven(maxValue)
+    val maxValue = max212(11,22)
+    val valueIsEven = isEven212(maxValue)
 
     // aşağıda ki açıklamaya örnek olması için yazıldı
-    val x = if (isEven(11)) 3 else 5
+    val x = if (isEven212(11)) 3 else 5
     println(x) // 5
 
     // aşağıda ki açıklamaya örnek olması için yazıldı
@@ -83,6 +83,7 @@ hata kaynağıdır. */
 /* Kotlin: Assignment bir statement’tır (expression değildir) Kotlin bu hataları tamamen engellemek için assignment’ı
 statement yapmıştır:*/
 
+/*
 fun test(){
     var x = 5
     x = 7 // sadece statement — value döndürmez
@@ -93,6 +94,7 @@ fun test(){
     }
     */
 }
+*/
 
 /*
 
@@ -129,6 +131,7 @@ Assignment, bir variable’a değer verme işlemidir.
 
 x'in value’su 5 yapılır. Ama bu işlem bir değer döndürmez (Kotlin’de). Java/C/C++’ta assignment aynı anda expression
 olduğu için bir değer döndürür, bu da karışıklık yaratır.
+
 */
 
 
