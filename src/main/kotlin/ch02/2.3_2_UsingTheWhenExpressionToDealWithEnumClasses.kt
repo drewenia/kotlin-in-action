@@ -26,7 +26,7 @@ rengin “warmth” derecesine göre farklı branch’ler kullanmak istersen, en
 gruplayabilirsin.
 */
 
-fun measureColor(color : Color231v2) : String{
+fun measureColor232(color : Color231v2) : String{
     return when(color) {
         Color231v2.RED, Color231v2.ORANGE, Color231v2.YELLOW -> "warm (red = ${color.r})"
         Color231v2.GREEN -> "neutral (green = ${color.g}"
@@ -36,5 +36,5 @@ fun measureColor(color : Color231v2) : String{
 
 fun main() {
     println(getMnemonic232(Color231.RED)) // Richard
-    println(measureColor(Color231v2.INDIGO))
+    println(measureColor232(Color231v2.INDIGO))
 }
