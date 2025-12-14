@@ -27,7 +27,7 @@ performansı koruyabilir.
   odaklanır, NullPointerException gibi yaygın hataları önler, kompakt ve kolay okunabilir code sağlar ve Java ile
   sınırsız entegrasyon sunar.
 
-[Source Code](src/main/kotlin/ch01)
+[Source Code -> Chapter 1](src/main/kotlin/ch01)
 
 # Chapter 2
 
@@ -57,6 +57,8 @@ performansı koruyabilir.
 
 * Kotlin’de exception handling Java’ya çok benzerdir, fark olarak Kotlin, bir function’ın fırlatabileceği exception’ları
   declare etmenizi gerektirmez.
+
+[Source Code -> Chapter 2](src/main/kotlin/ch02)
 
 # Chapter 3
 
