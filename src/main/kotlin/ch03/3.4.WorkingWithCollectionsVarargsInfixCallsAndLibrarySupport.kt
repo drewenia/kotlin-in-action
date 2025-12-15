@@ -1,0 +1,12 @@
+package ch03
+
+/* Bu bölüm, collection’larla çalışmak için Kotlin standard library’de bulunan bazı function’ları gösterir. Bu sırada,
+ilgili birkaç language feature da açıklanır:
+
+* Vararg keyword’ü; arbitrary sayıda argument alan bir function declare etmene olanak tanır
+
+* Tek argument alan bazı function’ları daha az seremonik biçimde call etmeyi sağlayan infix notation
+
+* Tek bir composite value’yu birden fazla variable’a unpack etmene olanak tanıyan destructuring declaration’lar
+
+*/

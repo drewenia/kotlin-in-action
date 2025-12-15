@@ -22,7 +22,7 @@ saklayacak bir yer yoktur. Aynı property’yi bir StringBuilder üzerinde defin
 değiştirilebildiği için onu var yapabilirsin. */
 
 var StringBuilder.lastchar335: Char
-    get() = this.get(length - 1)
+    get() = this[length - 1]
     set(value) {
         this.setCharAt(length - 1, value)
     }
