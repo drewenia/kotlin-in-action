@@ -1,0 +1,52 @@
+package ch03
+
+/* İki farklı implementasyon içeren başka bir örneğe bakalım: ilki String üzerindeki extension’ları kullanacak, ikincisi
+ise regular expression’larla çalışacak. Görevin, bir file’ın tam path adını bileşenlerine ayırmak olacak: bir directory,
+bir filename ve bir extension. Kotlin standard library, verilen delimiter’ın ilk (ya da son) occurrence’ından önceki
+(ya da sonraki) substring’i almak için function’lar içerir. Aşağıda ki kod, bu görevi çözmek için bunları nasıl
+kullanabileceğini gösterir. */
+
+/* "/Users/yole/kotlin-book/chapter.adoc" */
+
+fun parsePath352(path : String) {
+    val directory = path.substringBeforeLast("/")
+    val fullName = path.substringAfterLast("/")
+    val fileName = fullName.substringBeforeLast(".")
+    val extension = fullName.substringAfterLast(".")
+
+    println("Dir: $directory, name: $fileName, ext: $extension")
+    // Dir: /Users/yole/kotlin-book, name: chapter, ext: adoc
+}
+
+fun main() {
+    parsePath352("/Users/yole/kotlin-book/chapter.adoc")
+    parsePathRegex352("/Users/yole/kotlin-book/chapter.adoc")
+}
+
+/* File path’inin son slash sembolünden önceki substring, kapsayan directory’nin path’idir; son noktanın sonraki
+substring’i file extension’dır ve filename ise bunların arasında yer alır. Kotlin, güçlü ancak yazıldıktan sonra bazen
+anlaşılması zor olabilen regular expression’lara başvurmadan string’lerle çalışmayı kolaylaştırır. Regular expression
+kullanmak istersen, Kotlin standard library yardımcı olabilir. Aşağıdaki kod, aynı görevin regular expression’lar
+kullanılarak nasıl yapılabileceğini gösterir. */
+
+fun parsePathRegex352(path : String){
+    val regex ="""(.+)/(.+)\.(.+)""".toRegex()
+    val matchResult = regex.matchEntire(path)
+    if (matchResult != null){
+        val(directory,filename,extension) = matchResult.destructured
+        println("Dir : $directory, name : $filename, extension : $extension")
+        // Dir: /Users/yole/kotlin-book, name: chapter, ext: adoc
+    }
+}
+
+/* Bu örnekte, regular expression üçlü tırnaklı bir string içinde yazılmıştır. Bu tür bir string’de, backslash dahil
+olmak üzere hiçbir karakteri escape etmen gerekmez; dolayısıyla literal bir noktayı eşleştiren bir regular expression’ı,
+normal bir string literal’ında yazacağın \. yerine . olarak ifade edebilirsin img_2.png'ye bak */
+
+/* Bu regular expression, bir path’i slash ve nokta ile ayrılmış üç gruba böler. Pattern . başlangıçtan itibaren
+herhangi bir karakterle eşleşir; bu nedenle ilk grup (.+), son slash’ten önceki substring’i içerir. Bu substring,
+önceki tüm slash’leri kapsar çünkü bunlar “any character” pattern’ı ile eşleşir. Benzer şekilde, ikinci grup son
+noktanın öncesindeki (ve son slash’ten sonraki) substring’i içerir ve üçüncü grup kalan kısmı içerir. Şimdi, önceki
+örnekteki parsePathRegex function’ının implementasyonunu ele alalım. Bir regular expression oluşturur ve onu input path
+ile match edersin. Match başarılıysa (sonuç null değilse), destructured property’sinin value’larını ilgili variable’lara
+assign edersin. Bu, bir Pair ile iki variable’ı initialize ederken kullanılan syntax ile aynıdır; */
