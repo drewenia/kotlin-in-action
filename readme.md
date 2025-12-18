@@ -82,3 +82,5 @@ Kotlin, Java collection class’larını daha zengin bir API ile geliştirir.
   yolunu sağlar.
 
 * Local function’lar, code’unuzu daha temiz yapılandırmanıza ve duplication’ı ortadan kaldırmanıza yardımcı olur.
+
+[Source Code -> Chapter 3](src/main/kotlin/ch03)
