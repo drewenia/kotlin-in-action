@@ -1,0 +1,125 @@
+package ch04
+
+/* Interface’leri define etme ve implement etme konusuna bakarak başlayacağız. Kotlin interface’leri, abstract method
+definition’ları ile birlikte non-abstract method implementation’ları da içerebilir; ancak herhangi bir state
+içeremezler. Kotlin’de bir interface declare etmek için class yerine interface keyword’ünü kullanırsın. Bir element’in
+clickable olduğunu—örneğin bir button ya da hyperlink—belirten bir interface, aşağıdaki code gibi görünebilir. */
+
+interface Clickable411 {
+    fun click411()
+}
+
+/* Bu, click adlı tek bir abstract method’a sahip bir interface declare eder; bu method herhangi bir value return etmez.
+Interface’i implement eden tüm non-abstract class’ların bu method için bir implementation sağlaması gerekir. Teknik
+olarak bir value return eder: Unit, Kotlin’de Java’nın void’ine karşılık gelir. Bir button’ı Clickable olarak
+işaretlemek için, class name’den sonra bir colon koyarak interface name’i yazarsın ve click function için bir
+implementation sağlarsın. */
+
+class Button411 : Clickable411 {
+    override fun click411() = println("I was clicked")
+}
+
+/*
+fun main() {
+    Button411().click411() // I was clicked
+}
+*/
+
+/* Kotlin, class adından sonra gelen colon’ı hem composition (yani interfaces’i implementing) hem de inheritance
+(yani subclassing; bunu 4.1.2 bölümünde göreceksiniz) için kullanır. Bir class istediği kadar interface implement
+edebilir, ancak yalnızca tek bir class extend edebilir. override modifier, superclass ya da interface’ten gelen methods
+ve properties’i override edenleri işaretlemek için kullanılır. Optional @Override annotation kullanan Java’nın aksine,
+Kotlin’de override modifier kullanımı zorunludur. Bu, implementation’ınızı yazdıktan sonra bir method eklendiğinde onu
+yanlışlıkla override etmenizi engeller; method’u açıkça override olarak işaretlemediğiniz ya da yeniden
+adlandırmadığınız sürece kodunuz compile olmaz. Bir interface method’u default bir implementation’a sahip olabilir. Bunu
+yapmak için yalnızca bir method body’si sağlarsınız. Bu durumda, Clickable interface’ine varsayılan bir implementation’a
+sahip, yalnızca biraz metin yazdıran bir showOff function’ı ekleyebilirsiniz. */
+
+interface Clickable411v2{
+    fun click()
+    fun showOff() = println("I am clickable")
+}
+
+/* Bu interface’i implement ederseniz, click için bir implementation sağlamak zorunda kalırsınız. showOff method’unun
+behavior'unu yeniden tanımlayabilirsiniz ya da default behavior sizin için uygunsa onu atlayabilirsiniz. Şimdi, başka
+bir interface’in de bir showOff method’u tanımladığını ve bunun için aşağıdaki implementation’a sahip olduğunu
+varsayalım. */
+
+interface Focusable411 {
+    fun setFocus(b : Boolean) =
+        println("I ${if (b) "got" else "lost"} focus")
+
+    fun showOff() = println("I am focusable")
+}
+
+/* Class’ınızda her iki interface’i de implement etmeniz gerekirse ne olur? Her biri default bir implementation’a sahip
+bir showOff method’u içerdiğine göre, hangi implementation geçerli olur? Hiçbiri. Bunun yerine, showOff’u açıkça
+implement etmezseniz aşağıdaki Compiler error’ını alırsınız:
+
+The class 'Button' must override public open fun showOff()
+because it inherits many implementations of it.
+
+Kotlin Compiler, kendi implementation’ınızı sağlamaya sizi zorlar.
+*/
+
+class Button411v2 : Clickable411v2, Focusable411{
+    override fun click() = println("I was clicked")
+    /* Aynı member için birden fazla implementation inherit ediliyorsa, açık bir implementation sağlamanız gerekir. */
+    override fun showOff(){
+        /* Burada, angle brackets içindeki supertype adıyla nitelendirilen super, call etmek istediğiniz method’un hangi
+        parent’a ait olduğunu belirtir. */
+        super<Focusable411>.showOff()
+        super<Clickable411v2>.showOff()
+    }
+}
+
+/* Button class’ı artık iki interface’i implement eder. showOff()’u, supertypes’ten inherit ettiğiniz her iki
+implementation’ı da call ederek implement edersiniz. Inherit edilmiş bir implementation’ı invoke etmek için, angle
+brackets içinde base type adıyla birlikte super keyword’ünü kullanırsınız: super<Clickable>.showOff() (Java’daki
+Clickable.super.showOff()’tan farklı bir syntax). Yalnızca tek bir inherit edilmiş implementation’ı invoke etmeniz
+gerekiyorsa, expression body syntax’ını kullanabilir ve bunu yazabilirsiniz: */
+
+class Button411v3 : Clickable411v2, Focusable411{
+    override fun click() = println("I was clicked")
+    override fun showOff() = super<Clickable411v2>.showOff()
+}
+
+/* Button class’ınızın bir instance’ını oluşturabilir ve inherit edilen tüm method’ları invoke edebilirsiniz—override
+edilen showOff ve click function’larını ve ayrıca default bir implementation sağlayan Focusable interface’inden gelen
+setFocus function’ını. */
+
+fun main() {
+    val button = Button411v2()
+
+    button.showOff()
+    // I am focusable
+    // I am clickable
+
+    button.setFocus(false)
+    // I lost focus
+
+    button.click()
+    // I was clicked.
+}
+
+/* Kotlin, default method’lara sahip her interface’i, normal bir interface ile method body’leri static method’lar
+olarak içeren bir class’ın birleşimi şeklinde compile eder. Interface yalnızca declaration’ları içerir ve class tüm
+implementation’ları static method’lar olarak içerir. Bu nedenle, böyle bir interface’i bir Java class’ında implement
+etmeniz gerekiyorsa, Kotlin’de method body’si olanlar da dahil olmak üzere tüm method’lar için kendi
+implementation’larınızı tanımlamanız gerekir. Örneğin, Clickable’ı implement eden bir JavaButton, Kotlin’in ikincisi
+için default bir implementation sağlamasına rağmen, hem click hem de showOff için implementation sağlamak zorundadır;
+bu durum java package'i içerisinde JavaButtonCh04 içerisinde gösterilmiştir.*/
+
+/*
+public class JavaButtonCh04 implements Clickable411v2{
+    @Override
+    public void click() {
+        System.out.println("I was clicked");
+    }
+
+    @Override
+    public void showOff() {
+        System.out.println("I am showing off");
+    }
+}
+*/
