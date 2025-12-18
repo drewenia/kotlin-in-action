@@ -1,0 +1,14 @@
+package ch04
+
+/* Kotlin’in class ve interface’leri, Java’dan alışık olduğundan biraz farklıdır: örneğin, interface’ler property
+declaration’ları içerebilir. Kotlin’de declaration’lar default olarak final ve public’tir. Ayrıca, nested class’lar
+default olarak inner değildir; outer class’larına örtük bir referans içermezler. Constructor’lar için, kısa primary
+constructor syntax’ı çoğu durumda gayet iyi çalışır; ancak Kotlin, nontrivial initialization logic içeren
+constructor’ları declare etmene olanak tanıyan tam bir syntax da sunar. Aynı durum property’ler için de geçerlidir:
+özlü syntax kullanışlıdır, ancak accessor’ların kendi implementasyonlarını kolayca tanımlayabilirsin. Kotlin Compiler,
+verbosity’den kaçınmak için faydalı method’lar generate edebilir. Bir class’ı data class olarak declare etmek,
+Compiler’a bu class için birkaç standart method generate etmesini söyler. Delegation pattern Kotlin’de native olarak
+desteklendiği için, delegating method’ları elle yazmaktan da kaçınabilirsin. Ayrıca Kotlin’in **object** keyword’ünü de
+göreceksin; bu keyword bir class declare eder ve aynı zamanda bu class’ın bir instance’ını create eder. Bu keyword,
+singleton object’leri, companion object’leri ve object expression’ları (Java anonymous class’lara benzer) ifade etmek
+için kullanılır. */
