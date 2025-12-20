@@ -1,0 +1,8 @@
+package ch04
+
+/* Object-oriented dillerde class’lar genellikle bir veya daha fazla constructor’a sahip olabilir. Kotlin de aynıdır,
+ancak önemli ve açık bir ayrım yapar: primary constructor (genellikle bir class’ı initialize etmenin ana ve kısa yoludur
+ve class body’sinin dışında declare edilir) ile secondary constructor (class body’sinin içinde declare edilir) arasında
+ayrım yapar. Ayrıca initializer block’lar içinde ek initialization logic’i yazmanıza da izin verir. Önce primary
+constructor ve initializer block’ların declare edilme syntax’ına bakacağız, ardından birden fazla constructor’ın nasıl
+declare edileceğini açıklayacağız. Bundan sonra da property’ler hakkında daha ayrıntılı konuşacağız. */
