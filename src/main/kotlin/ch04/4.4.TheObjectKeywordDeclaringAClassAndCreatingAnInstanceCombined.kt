@@ -1,0 +1,15 @@
+package ch04
+
+/* object keyword’ü Kotlin’de birçok durumda karşına çıkar, ancak hepsi aynı temel fikri paylaşır: bu keyword bir class
+define eder ve aynı anda bu class’ın bir instance’ını (başka bir deyişle bir object) oluşturur. Kullanıldığı farklı
+durumlara bakalım:
+
+Object declaration — Bir singleton define etmenin bir yolu.
+
+Companion objects — Factory method’lar ve bu class ile ilgili olup call edilmek için class instance’ı gerektirmeyen
+diğer method’ları içerebilir. Member’larına class name üzerinden erişilebilir.
+
+Object expressions — Java’nın anonymous inner class’ı yerine kullanılır.
+
+Bu Kotlin feature’larını ayrıntılı olarak ele almanın zamanı geldi.
+*/
