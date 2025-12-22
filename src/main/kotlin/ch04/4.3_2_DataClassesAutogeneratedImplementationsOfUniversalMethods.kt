@@ -1,0 +1,86 @@
+package ch04
+
+/* Eğer class’ınızın data’nızı taşımak için kullanışlı bir holder olmasını istiyorsanız, şu method’ları override etmeniz
+gerekir: **toString**, **equals** ve **hashCode**. Genellikle bu method’ların implementation’ları basittir ve
+**IntelliJ IDEA** gibi **IDE**’ler bunları otomatik olarak **generate** etmenize yardımcı olabilir; ayrıca doğru ve
+tutarlı şekilde implement edildiklerini de kontrol eder. İyi haber şu ki, Kotlin’de bu method’ların hepsini generate
+etmek zorunda değilsiniz. Class’ınıza, aşağıdaki code’da gösterildiği gibi **data** modifier’ını eklerseniz, gerekli
+method’lar sizin için otomatik olarak generated edilir. */
+
+data class Customer432(val name: String, val postalCode: Int)
+
+/* Artık genelde ihtiyaç duyduğunuz tüm standart method’ları override eden bir class’ınız var:
+
+• instance’ları karşılaştırmak için **equals**
+• **HashMap** gibi hash-based container’larda instance’ları key olarak kullanmak için **hashCode**
+• declaration order’da tüm field’ları gösteren string representation’lar üretmek için **toString**
+
+equals ve hashCode method’ları, primary constructor’da declared edilen tüm properties’i dikkate alır. Generated equals
+method’u, tüm properties’in value’larının eşit olup olmadığını kontrol eder. hashCode method’u ise, tüm properties’in
+hash code’larına bağlı bir value döndürür. Primary constructor’da declared edilmeyen properties, equality check’lere ve
+hash code calculation’a dahil edilmez. Aşağıdaki code, bu “magic”i anlamanıza yardımcı olan bir example gösterir. */
+
+fun main() {
+    val customer1 = Customer432("Sam", 11521)
+    val customer2 = Customer432("Mart", 15500)
+    val customer3 = Customer432("Sam", 11521)
+
+    println(customer1) // Customer432(name=Sam, postalCode=11521)
+
+    println(customer1 == customer2) // false
+    println(customer1 == customer3) // true
+    println(customer1.hashCode()) // 2580770
+    println(customer2.hashCode()) // 74129494
+    println(customer3.hashCode()) // 2580770
+
+    val bob = Customer432v2("Bob", 973293)
+    val bob2 = bob.copy(postalCode = 382555)
+    println(bob2) // Customer name : Bob, postal code : 382555
+}
+
+/* Bu, data class’lar için generated edilen faydalı method’ların complete bir listesi değildir. Bir sonraki section bir
+tane daha method’u tanıtır; */
+
+/*
+
+**DATA CLASSES VE IMMUTABILITY: COPY METHOD**
+
+Bir data class’in property’lerinin mutlaka val olması gerekmez — var da kullanabilirsiniz — ancak yalnızca read-only
+property’ler kullanarak data class instance’larını immutable yapmak şiddetle tavsiye edilir. Bu, bu tür instance’ları
+HashMap veya benzeri bir container’da key olarak kullanmak istiyorsanız gereklidir; aksi halde, key olarak kullanılan
+object container’a eklendikten sonra değiştirilirse container invalid bir state’e girebilir. Immutable object’ler ayrıca
+özellikle multithreaded code’da çok daha kolay reason edilebilir: bir object oluşturulduktan sonra original state’inde
+kalır ve code’unuz object ile çalışırken başka thread’lerin object’i modify etmesi konusunda endişelenmeniz gerekmez.
+Data class’leri immutable object’ler olarak kullanmayı daha da kolaylaştırmak için Kotlin compiler bir method daha
+generate eder: class instance’larını copy etmenize ve bazı property’lerin value’larını değiştirmenize olanak tanıyan bir
+method. Bir copy oluşturmak, genellikle instance’ı yerinde modify etmekten daha tercih edilebilir bir alternatiftir:
+copy ayrı bir life cycle’a sahiptir ve original instance’a referans veren code’daki yerleri etkileyemez. Aşağıda,
+copy method’u manual olarak implement etseydiniz nasıl görüneceği gösterilmektedir: */
+
+class Customer432v2(val name: String, val postalCode: Int) {
+    // Eğer çağıran biri name vermezse: bu objenin (this) name’i kullanılır. Aynısı postal code içinde geçerlidir
+    fun copy(name: String = this.name, postalCode: Int = this.postalCode) = Customer432v2(name, postalCode)
+    override fun toString() = "Customer name : $name, postal code : $postalCode"
+}
+
+/* Yukarıda ki class'ın kullanımını main methodda örnekledim. copy fonksiyonu şunu yapıyor: Mevcut objeden yeni bir
+obje üret, ama istersen bazı alanları değiştir, istemezsen aynı değerleri kullan.
+
+Fonksiyon gövdesi neden {} değil de = ? Bu expression body syntax’ıdır.
+
+Records ilk olarak Java 14’te tanıtıldı. Kavramsal olarak, immutable value gruplarını tutmaları açısından Kotlin’in
+data classes’lerine çok benzerler. Records ayrıca value’larına dayalı olarak toString, hashCode ve equals gibi bazı
+method’ları otomatik olarak generate eder. Ancak copy method gibi diğer convenience function’lar records’ta bulunmaz.
+
+Kotlin data classes ile karşılaştırıldığında, Java records ayrıca daha fazla yapısal kısıtlama dayatır:
+
+* Tüm property'ler private ve final olmak zorundadır.
+* Bir record bir superclass’ı extend edemez.
+* Class body içinde ek property'ler declare edemezsiniz.
+
+Interoperability amaçları için, bir data class’ı @JvmRecord annotation’ı ile annotate ederek Kotlin’de record class’lar
+declare edebilirsiniz. Bu durumda, data class record’lar için geçerli olan aynı structural restrictions’a uymak
+zorundadır. data modifier’ın value-object class’ları kullanmayı nasıl daha convenient hale getirdiğini gördünüz. Şimdi,
+IDE tarafından generate edilen boilerplate code’dan kaçınmanızı sağlayan bir diğer Kotlin feature’ına geçelim: class
+delegation. */
+
