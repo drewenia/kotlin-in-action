@@ -84,3 +84,43 @@ Kotlin, Java collection class’larını daha zengin bir API ile geliştirir.
 * Local function’lar, code’unuzu daha temiz yapılandırmanıza ve duplication’ı ortadan kaldırmanıza yardımcı olur.
 
 [Source Code -> Chapter 3](src/main/kotlin/ch03)
+
+# Chapter 4
+
+* Kotlin’deki interface’ler Java’dakilere benzerdir, ancak default implementation’lar ve property’ler içerebilirler.
+
+* Tüm declaration’lar varsayılan olarak final ve public’tir.
+
+* Bir declaration’ı non-final yapmak için open ile işaretlersin.
+
+* internal declaration’lar aynı module içinde görünürdür.
+
+* Nested class’lar varsayılan olarak inner değildir. Outer class’a bir referans saklamak için inner keyword’ünü
+  kullanırsın.
+
+* Sealed class’ların tüm direct subclass’ları ve sealed interface’lerin tüm implementation’ları compile time’da
+bilinmelidir.
+
+* Initializer block’lar ve secondary constructor’lar, class instance’larını initialize etmek için esneklik sağlar.
+
+* Accessor body’si içinden bir property backing field’ına referans vermek için field tanımlayıcısını kullanırsın.
+
+* Data class’lar, Compiler tarafından generate edilen equals, hashCode, toString, copy ve diğer method’ları sağlar.
+
+* Class delegation, code’unda birçok benzer delegating method’dan kaçınmana yardımcı olur.
+
+* Object declaration, Kotlin’in singleton bir class define etme yoludur.
+
+* Companion object’ler (package-level function ve property’lerle birlikte) Java’nın static method ve field tanımlarının
+yerini alır.
+
+* Companion object’ler, diğer object’ler gibi interface’leri implement edebilir ve extension function ile property’lere
+sahip olabilir.
+
+* Object expression’lar, Java’nın anonymous inner class’larının Kotlin’deki karşılığıdır ve birden fazla interface
+implement edebilme ve object’in oluşturulduğu scope’ta define edilen variable’ları değiştirebilme gibi ek güçler sunar.
+
+* Inline class’lar, çok sayıda kısa ömürlü object allocate edilmesinden kaynaklanan olası performance kayıplarını
+önlerken, programa bir type safety katmanı eklemeni sağlar.
+
+[Source Code -> Chapter 4](src/main/kotlin/ch04)
