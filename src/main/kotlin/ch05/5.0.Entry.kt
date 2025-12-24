@@ -1,0 +1,11 @@
+package ch05
+
+/* Lambda expression’lar, ya da kısaca lambda’lar, temel olarak diğer function’lara geçilebilen küçük kod parçalarıdır.
+Lambda’lar sayesinde, ortak kod yapıları kolayca library function’lara çıkarılabilir; böylece daha fazla kod tekrar
+kullanımı sağlanır ve daha ifade edici bir şekilde program yazabilirsin. Kotlin standard library, lambda’ları yoğun
+şekilde kullanır. Bu bölümde, lambda’nın ne olduğunu öğrenecek, lambda function’lar için tipik kullanım örneklerini
+görecek, Kotlin’de nasıl göründüklerini inceleyecek ve member reference’larla ilişkilerini öğreneceksin. Ayrıca
+lambda’ların, lambda’lar göz önünde bulundurularak tasarlanmamış olsa bile, Java API ve library’leri ile tamamen
+interoperable olduğunu ve Kotlin’de functional interface’leri kullanarak function type’larıyla çalışan code’u daha ifade
+edici hâle getirebileceğini göreceksin. Son olarak, receiver’lı lambda’lara bakacağız — bu, body’si çevresindeki
+code’dan farklı bir context’te çalıştırılan özel bir lambda türüdür. */
