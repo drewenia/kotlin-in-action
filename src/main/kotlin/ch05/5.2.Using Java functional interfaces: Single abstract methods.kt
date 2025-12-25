@@ -1,0 +1,60 @@
+package ch05
+
+import java.awt.Button
+import javax.swing.text.View
+
+/* JVM ekosisteminde zaten Kotlin ile yazılmış birçok library vardır ve bu library’ler doğrudan Kotlin’in lambda’larını
+kullanabilir. Ancak, Kotlin projenizde Java ile yazılmış bir library kullanmak isteyebilirsiniz. İyi haber şu ki, Kotlin
+lambda’ları Java API’ları ile tamamen interoperable’dır. Bu bölümde, bunun tam olarak nasıl çalıştığını göreceksiniz.
+*/
+
+/*
+// Lambda’yı bir argument olarak pass eder
+button.setOnClickListener {
+    println("I was clicked!")
+}
+
+Button class, setOnClickListener method’u aracılığıyla bir button’a yeni bir listener set eder; bu method,
+OnClickListener type’ında bir argument alır:
+
+/* Java */
+public class Button {
+    public void setOnClickListener(OnClickListener l) { ... }
+}
+
+OnClickListener interface’i bir method declare eder: onClick
+
+/* Java */
+public interface OnClickListener {
+    void onClick(View v);
+}
+
+Java version’ına bağlı olarak, OnClickListener interface’ini implement etmek oldukça karmaşık olabilir. Java 8’den önce,
+setOnClickListener method’una argument olarak pass etmek için yeni bir anonymous class instance’ı oluşturmanız
+gerekiyordu:
+
+/* Before Java 8 */
+button.setOnClickListener(new OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        /* ... */
+    }
+}
+
+/* Only since Java 8 */
+button.setOnClickListener(view -> { /* ... */ });
+
+Kotlin’de, sadece bir lambda pass edersin:
+button.setOnClickListener { view -> /* ... */ }
+
+OnClickListener’ı implement etmek için kullanılan lambda, onClick method’undaki gibi View type’ında bir parameter alır.
+Mapping, img_4’de gösterilmiştir. Lambda’nın parameter’ları, single abstract method’a sahip interface’deki method
+parameter’ları ile correspond eder.
+*/
+
+/* Bu, OnClickListener interface’in yalnızca bir abstract method’a sahip olması nedeniyle çalışır. Bu tür interface’lere
+functional interface veya single abstract method (SAM) interface denir. Java API, Runnable ve Callable gibi functional
+interface’lerle ve bunlarla çalışan method’larla doludur. Kotlin, functional interface type’ında parameter alan Java
+method’larını çağırırken lambda kullanmana izin verir ve böylece Kotlin kodunun clean ve idiomatic kalmasını sağlar.
+Şimdi, functional interface type’ında bir argument bekleyen bir method’a lambda pass ettiğinde neler olduğunu detaylı
+olarak inceleyelim. */
