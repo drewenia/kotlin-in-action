@@ -1,0 +1,54 @@
+package ch05
+
+/* Functional interface bekleyen herhangi bir Java method’una bir lambda pass edebilirsin. Örneğin, Runnable type’ında
+bir parameter alan bu method’u ele alalım:
+
+/* Java */
+void postponeComputation(int delay, Runnable computation);
+*/
+
+/* Kotlin’de, onu invoke edebilir ve bir lambda’yı argument olarak pass edebilirsin. Compiler, onu automatically
+Runnable’ın bir instance’ına dönüştürür:
+
+postponeComputation(1000) { println(42) }
+
+“Runnable’ın bir instance’ı” dediğimizde, “Runnable’ı implement eden bir anonymous class’ın instance’ı”nı kastediyoruz.
+Compiler bunu senin için oluşturur ve lambda’yı single abstract method’un body’si olarak kullanır—bu durumda run
+method’u. Aynı etkiyi, Runnable’ı açıkça implement eden bir anonymous object oluşturarak da elde edebilirsin:
+
+// Bir functional interface’in implementation’ı olarak bir object expression pass eder
+postponeComputation(1000, object : Runnable {
+    override fun run() {
+        println(42)
+    }
+})
+
+Ancak bir fark vardır. Bir object’i açıkça declare ettiğinde, her invocation’da yeni bir instance oluşturulur. Bir
+lambda ile durum farklıdır: eğer lambda, defined edildiği function’dan herhangi bir variable’a access etmiyorsa,
+corresponding anonymous class instance’ı call’lar arasında reuse edilir.
+
+// Tüm program için tek bir Runnable instance’ı oluşturulur.
+postponeComputation(1000) { println(42) }
+*/
+
+/* Eğer lambda, surrounding scope’tan variable’ları capture ediyorsa, her invocation için aynı instance’ı reuse etmek
+artık mümkün değildir. Bu durumda, compiler her call için yeni bir object oluşturur ve captured variable’ların
+value’larını bu object içinde bir field olarak store eder. Örneğin, aşağıdaki function’da her invocation yeni bir
+Runnable instance’ı kullanır ve id value’sunu bir field olarak saklar:
+
+fun handleComputation(id: String) {
+    // Her handleComputation call’unda yeni bir Runnable instance’ı oluşturur
+    postponeComputation(1000) {
+        // Lambda içinde id variable’ını capture eder
+        println(id)
+    }
+}
+*/
+
+/* Bir lambda için anonymous class ve bu class’ın bir instance’ını oluşturma konusundaki bu tartışmanın, functional
+interface bekleyen Java method’ları için geçerli olduğunu; ancak Kotlin extension method’ları kullanarak
+collection’larla çalışmaya uygulanmadığını unutma. Inline olarak marked edilmiş bir Kotlin function’a lambda pass
+edersen, herhangi bir anonymous class oluşturulmaz. Library function’ların çoğu inline olarak marked edilmiştir.
+Gördüğün gibi, çoğu durumda bir lambda’nın functional interface’in bir instance’ına dönüştürülmesi, senin herhangi bir
+çaban olmadan automatically gerçekleşir. Ancak, bu dönüşümü açıkça yapman gereken durumlar da vardır. Bunun nasıl
+yapılacağını görelim. */
