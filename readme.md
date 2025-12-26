@@ -27,7 +27,7 @@ performansı koruyabilir.
   odaklanır, NullPointerException gibi yaygın hataları önler, kompakt ve kolay okunabilir code sağlar ve Java ile
   sınırsız entegrasyon sunar.
 
-[Source Code -> Chapter 1](src/main/kotlin/ch01)
+[Chapter 1](src/main/kotlin/ch01)
 
 # Chapter 2
 
