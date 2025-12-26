@@ -99,7 +99,7 @@ Kotlin, Java collection class’larını daha zengin bir API ile geliştirir.
   kullanırsın.
 
 * Sealed class’ların tüm direct subclass’ları ve sealed interface’lerin tüm implementation’ları compile time’da
-bilinmelidir.
+  bilinmelidir.
 
 * Initializer block’lar ve secondary constructor’lar, class instance’larını initialize etmek için esneklik sağlar.
 
@@ -112,15 +112,44 @@ bilinmelidir.
 * Object declaration, Kotlin’in singleton bir class define etme yoludur.
 
 * Companion object’ler (package-level function ve property’lerle birlikte) Java’nın static method ve field tanımlarının
-yerini alır.
+  yerini alır.
 
 * Companion object’ler, diğer object’ler gibi interface’leri implement edebilir ve extension function ile property’lere
-sahip olabilir.
+  sahip olabilir.
 
 * Object expression’lar, Java’nın anonymous inner class’larının Kotlin’deki karşılığıdır ve birden fazla interface
-implement edebilme ve object’in oluşturulduğu scope’ta define edilen variable’ları değiştirebilme gibi ek güçler sunar.
+  implement edebilme ve object’in oluşturulduğu scope’ta define edilen variable’ları değiştirebilme gibi ek güçler
+  sunar.
 
 * Inline class’lar, çok sayıda kısa ömürlü object allocate edilmesinden kaynaklanan olası performance kayıplarını
-önlerken, programa bir type safety katmanı eklemeni sağlar.
+  önlerken, programa bir type safety katmanı eklemeni sağlar.
 
 [Source Code -> Chapter 4](src/main/kotlin/ch04)
+
+# Chapter 5
+
+* Lambda’lar, kod parçalarını function’lara argument olarak pass etmeni sağlar; böylece common code structure’larını
+  kolayca extract edebilirsin.
+
+* Kotlin, lambda’ları parantez dışından function’lara pass etmene izin vererek kodunu clean ve concise hâle getirir.
+
+* Eğer bir lambda yalnızca tek bir parameter alıyorsa, ona implicit adı it ile referans verebilirsin. Bu, kısa ve basit
+  lambda’larda tek lambda parameter’ını explicit olarak isimlendirme zahmetini ortadan kaldırır.
+
+* Lambda’lar, external variable’ları capture edebilir. Bu, örneğin, lambda’yı çağıran function içindeki variable’lara
+  erişip onları değiştirebileceğin anlamına gelir.
+
+* Method, constructor ve property’lere referans oluşturmak için function adının başına :: ekleyebilirsin. Bu tür
+  referansları lambda yerine function’lara pass ederek kısa yol kullanabilirsin.
+
+* Single abstract method (SAM) interface’lerini implement etmek için, interface’i explicit olarak implement eden bir
+  object oluşturmak yerine lambda’ları pass edebilirsin.
+
+* Receiver’lı lambda’lar, özel bir receiver object üzerinde doğrudan method call etmene olanak tanır. Bu lambda’ların
+  body’si çevreleyen koddan farklı bir context’te execute edildiği için, kodunu yapılandırmana yardımcı olabilir.
+
+* with standart library function’ı, aynı object üzerinde birden fazla method call etmeyi ve object referansını tekrar
+  etmeyi gereksiz kılar. apply, herhangi bir object’i builder-style API kullanarak construct ve initialize etmeyi
+  sağlar. also ise bir object ile ek action’lar gerçekleştirmene olanak tanır.
+
+[Source Code -> Chapter 5](src/main/kotlin/ch05)
