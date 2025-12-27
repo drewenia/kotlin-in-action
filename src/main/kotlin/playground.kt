@@ -2,19 +2,14 @@ import java.io.BufferedReader
 import java.io.StringReader
 
 fun main() {
-    val reader = BufferedReader(StringReader("11"))
-    val reader2 = BufferedReader(StringReader("not a number"))
-    readNumber(reader) // 11
-    readNumber(reader2) // hiçbir şey yazdırılmaz
+    collection()
 }
 
-fun readNumber(reader : BufferedReader) {
-    // Exception oluşmadığında bu value kullanılır.
-    val number = try {
-        Integer.parseInt(reader.readLine())
-    } catch (e : NumberFormatException){
-        // Exception durumunda null value kullanılır.
-        null
-    }
-    println(number)
+fun collection() {
+    val strings = listOf("first", "second", "fourteenth")
+    println(strings.last()) // fourteenth
+    println(strings.shuffled()) // [second, fourteenth, first]
+
+    val numbers = setOf(1, 14, 2, 1, 14)
+    println(numbers.sum()) // 17 -> 2 adet 1 ve iki adet 14 olduğu için birleştirilir 17 sonucunu verir
 }
