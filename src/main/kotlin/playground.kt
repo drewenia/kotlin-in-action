@@ -1,11 +1,19 @@
+import java.io.BufferedReader
+import java.io.StringReader
+
 fun main() {
-    println(checkPercentage(91)) // 91
+    val reader = BufferedReader(StringReader("11"))
+    println(readNumber(reader)) // 11
 }
 
-fun checkPercentage(percentage: Int): Int {
-    val number =
-        if (percentage in 1..100) percentage
-        else throw IllegalArgumentException("A percentage value must be between 0 and 100: $percentage")
-    return number
+fun readNumber(reader: BufferedReader): Int? {
+    try {
+        val line = reader.readLine()
+        return Integer.parseInt(line)
+    } catch (e: NumberFormatException) {
+        return null
+    } finally {
+        reader.close()
+    }
 }
 
