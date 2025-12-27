@@ -3,15 +3,15 @@ import java.io.StringReader
 
 fun main() {
     val list = listOf(1, 2, 3)
-    val modifiedList = joinToString(list,"#","é","é")
-    println(modifiedList) // é1#2#3é
+    println(joinToString(list)) // [1, 2, 3]
+    println(joinToString(list, seperator = "$ ")) // [1$ 2$ 3]
 }
 
 fun <T> joinToString(
     collection: Collection<T>,
-    seperator: String,
-    prefix: String,
-    postfix: String
+    seperator: String = ", ",
+    prefix: String = "[",
+    postfix: String = "]"
 ): String {
     val result = StringBuilder(prefix)
     for ((index, element) in collection.withIndex()) {
