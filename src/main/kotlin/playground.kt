@@ -1,7 +1,8 @@
-import kotlin.math.E
-import kotlin.math.PI
-import kotlin.math.max
-
 fun main() {
-    println(max(PI, E)) // 3.141592653589793
+    val lastChar = "Hello".lastChar()
+    println(lastChar) // o
 }
+
+// Burada String receiver type
+// this -> Receiver object (Yani String)
+fun String.lastChar() : Char = get(length -1)
