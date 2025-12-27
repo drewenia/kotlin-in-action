@@ -2,14 +2,22 @@ import java.io.BufferedReader
 import java.io.StringReader
 
 fun main() {
-    collection()
+    val list = listOf(1, 2, 3)
+    val modifiedList = joinToString(list,"#","é","é")
+    println(modifiedList) // é1#2#3é
 }
 
-fun collection() {
-    val strings = listOf("first", "second", "fourteenth")
-    println(strings.last()) // fourteenth
-    println(strings.shuffled()) // [second, fourteenth, first]
-
-    val numbers = setOf(1, 14, 2, 1, 14)
-    println(numbers.sum()) // 17 -> 2 adet 1 ve iki adet 14 olduğu için birleştirilir 17 sonucunu verir
+fun <T> joinToString(
+    collection: Collection<T>,
+    seperator: String,
+    prefix: String,
+    postfix: String
+): String {
+    val result = StringBuilder(prefix)
+    for ((index, element) in collection.withIndex()) {
+        if (index > 0) result.append(seperator)
+        result.append(element)
+    }
+    result.append(postfix)
+    return result.toString()
 }
