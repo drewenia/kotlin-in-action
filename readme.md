@@ -58,7 +58,7 @@ performansı koruyabilir.
 * Kotlin’de exception handling Java’ya çok benzerdir, fark olarak Kotlin, bir function’ın fırlatabileceği exception’ları
   declare etmenizi gerektirmez.
 
-[Source Code -> Chapter 2](src/main/kotlin/ch02)
+[Chapter 2](src/main/kotlin/ch02)
 
 # Chapter 3
 
