@@ -1,9 +1,13 @@
 fun main() {
-    downToExample()
+    printListWithIndex()
 }
 
-fun downToExample(){
-    for (i in 100 downTo 1 step 2){
-        println(i) // 100 98 96 94 92 90 ... 2
+fun printListWithIndex() {
+    val list = listOf("10", "11", "1001")
+    for((index, element) in list.withIndex()){
+        println("Index : $index, Element : $element")
+        // Index : 0, Element : 10
+        // Index : 1, Element : 11
+        // Index : 2, Element : 1001
     }
 }
