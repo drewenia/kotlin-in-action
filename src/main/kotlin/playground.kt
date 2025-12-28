@@ -1,10 +1,3 @@
-fun main() {
-    val sb = StringBuilder("Kotlin?")
-    println(sb.lastChar) // ?
-    sb.lastChar = '!'
-    println(sb.lastChar) // !
-}
-
-fun <T> List<T>.last() : T {
-
+fun main(args: Array<String>) {
+    val list = listOf(*args) // Spread operator, array’in contents’ini unpack eder.
 }
