@@ -1,15 +1,12 @@
 fun main() {
-    val view : View = Button()
-    view.showoff() // I am a view
+    val sb = StringBuilder("Kotlin?")
+    println(sb.lastChar) // ?
+    sb.lastChar = '!'
+    println(sb.lastChar) // !
 }
 
-open class View {
-    open fun click() = println("View clicked")
-}
-
-class Button : View(){
-    override fun click() = println("Button clicked")
-}
-
-fun View.showoff() = println("I am a view")
-fun Button.showOff() = println("I am a button")
+var StringBuilder.lastChar: Char
+    get() = this[length - 1]
+    set(value) {
+        this.setCharAt(length - 1, value)
+    }
