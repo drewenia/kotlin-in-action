@@ -5,8 +5,6 @@ fun main() {
     println(sb.lastChar) // !
 }
 
-var StringBuilder.lastChar: Char
-    get() = this[length - 1]
-    set(value) {
-        this.setCharAt(length - 1, value)
-    }
+fun <T> List<T>.last() : T {
+
+}
