@@ -1,13 +1,5 @@
 fun main() {
-    val list = listOf(
-        Person("Alice", 30),
-        Person("Bob", 25)
-    )
-    for((name,age) in list){
-        println("Name : $name, Age : $age")
-    }
-    // Name : Alice, Age : 30
-    // Name : Bob, Age : 25
+    val text = "12.345-6.A"
+    val splittedText = text.split(".","-")
+    println(splittedText) // [12, 345, 6, A]
 }
-
-data class Person(val name: String, val age: Int)
