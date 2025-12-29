@@ -1,3 +1,5 @@
+Note : Chapter 4 devam ediyor...
+
 # Chapter 1
 
 Kotlin statically typed’dir ve type inference’i destekler; bu sayede source code’u concise tutarken doğruluk ve
@@ -124,7 +126,7 @@ Kotlin, Java collection class’larını daha zengin bir API ile geliştirir.
 * Inline class’lar, çok sayıda kısa ömürlü object allocate edilmesinden kaynaklanan olası performance kayıplarını
   önlerken, programa bir type safety katmanı eklemeni sağlar.
 
-[Source Code -> Chapter 4](src/main/kotlin/ch04)
+[Chapter 4](src/main/kotlin/ch04)
 
 # Chapter 5
 
