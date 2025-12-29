@@ -1,14 +1,5 @@
 fun main() {
-    val path = "/Users/yole/kotlin-book/chapter.adoc"
-    parsePath(path)
+    println(test) // Hmm 🤔
 }
 
-fun parsePath(path : String){
-    val regex ="""(.+)/(.+)\.(.+)""".toRegex()
-    val matchResult = regex.matchEntire(path)
-    if (matchResult != null){
-        val(directory,filename,extension) = matchResult.destructured
-        println("Dir : $directory, name : $filename, extension : $extension")
-        // Dir: /Users/yole/kotlin-book, name: chapter, ext: adoc
-    }
-}
+const val test = """Hmm ${"\uD83E\uDD14"}"""
