@@ -1,12 +1,16 @@
 fun main() {
-    val employee : Employee = Developer()
-    print(employee.salary) // 60000
+
 }
 
-abstract class Employee{
-    abstract val salary : Int
+internal open class TalkativeButton{
+    private fun yell() = println("Hey!")
+    protected fun whisper() = println("Let's talk!")
 }
 
-class Developer : Employee(){
-    override val salary : Int = 60_000
+// Hata: public bir member, internal receiver type TalkativeButton’ı expose ediyor (açığa çıkarıyor)
+/*
+fun TalkativeButton.giveSpeech(){
+    yell() // Hata: yell’e erişilemez; TalkativeButton içinde private’tır
+    whisper() // Hata: whisper’a erişilemez; TalkativeButton içinde protected’tır
 }
+*/
