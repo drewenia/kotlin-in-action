@@ -1,21 +1,31 @@
 fun main() {
-    saveUser(User(1, "Alice", "")) // Can't save user 1 empty Address
+    val button = Button()
+
+    button.showOff()
+    // I am clickable
+    // I am focusable
+
+    button.setFocus(false)
+    // I lost focus
 }
 
-class User(val id: Int, val name: String, val address: String)
+interface Clickable {
+    fun click()
+    fun showOff() = println("I am clickable")
+}
 
-fun User.validateBeforeSave(){
-    fun validate(
-        value : String,
-        fieldName : String
-    ){
-        if (value.isEmpty())
-            throw IllegalArgumentException("Can't save user $id empty $fieldName")
+interface Focusable {
+    fun setFocus(b: Boolean) = println("I ${if (b) "got" else "lost"} focus")
+    fun showOff() = println("I am focusable")
+}
+
+class Button : Clickable, Focusable {
+    override fun click() = println("I was clicked")
+    /* Aynı member için birden fazla implementation inherit ediliyorsa, açık bir implementation sağlamanız gerekir. */
+    override fun showOff() {
+        /* Burada, angle brackets içindeki supertype adıyla nitelendirilen super, call etmek istediğiniz method’un hangi
+        parent’a ait olduğunu belirtir. */
+        super<Clickable>.showOff()
+        super<Focusable>.showOff()
     }
-    validate(name,"Name")
-    validate(address,"Address")
-}
-
-fun saveUser(user : User){
-    user.validateBeforeSave()
 }
