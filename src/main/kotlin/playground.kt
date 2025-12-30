@@ -1,14 +1,16 @@
-import java.net.URI
-
 fun main() {
-
+    val processed = hashSetOf(Customer("Alice", 74100))
+    println(processed.contains(Customer("Alice", 74100))) // false
 }
 
-class PersonTrivial(val name: String, val age: Int)
+class Customer(val name: String, val postalCode: Int) {
+    override fun toString() = "Customer (name : $name, postalcode : $postalCode)"
 
-class PersonNonTrivial(val name: String, val birthYear: Int) {
-    val age : Int = 2025 - birthYear
+    override fun equals(other: Any?): Boolean {
+        if (other == null || other !is Customer) return false
+
+        return name == other.name && postalCode == other.postalCode
+    }
+
+    override fun hashCode(): Int = name.hashCode() * 31 + postalCode
 }
-
-// name için Otomatik getter/setter üretir
-class Person(var name : String)
