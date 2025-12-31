@@ -1,22 +1,31 @@
+import ch04.Person443v2
+import kotlin.random.Random
+
 fun main() {
-    println("Minimum password length ${User.MIN_PASSWORD_LENGTH}") // Minimum password length 8
-
-    val guest1 = User.createDefaultUser()
-    println(guest1.nickname) // Guest 1
-
-    val guest2 = User.createDefaultUser()
-    println(guest2.nickname) // Guest 2
+    val json = """{ "name": "John Doe" }"""
+    val person = Person.fromJSON(json)
+    println("First name : ${person.firstName}, Last name : ${person.lastName}")
+    // First name : John, Last name : Doe
 }
 
-class User(val nickname : String){
-    // class'ın companion (arkadaş) object'i
-    companion object{
-        const val MIN_PASSWORD_LENGTH = 8
-        private var idCounter = 0
+// business logic module
+class Person(val firstName : String, val lastName : String){
+    // Boş bir companion object declare eder
+    companion object
+}
 
-        fun createDefaultUser():User {
-            idCounter++
-            return User("Guest $idCounter")
-        }
-    }
+// client/server communication module
+fun Person.Companion.fromJSON(json : String) : Person{
+    val fullName = json
+        .substringAfter("\"name\"")
+        .substringAfter(":")
+        .substringAfter("\"")
+        .substringBefore("\"")
+
+    val parts = fullName.split(" ", limit = 2)
+
+    val firstName = parts.getOrElse(0) { "" }
+    val lastName = parts.getOrElse(1) { "" }
+
+    return Person(firstName, lastName)
 }
