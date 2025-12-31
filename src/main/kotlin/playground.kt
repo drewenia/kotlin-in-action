@@ -1,15 +1,17 @@
-fun main() {
-    var clickCount = 0
-    Button(object : MouseListener{
-        override fun onEnter() {
-            TODO("Not yet implemented")
-        }
+import kotlin.math.exp
 
-        override fun onClick() {
-            clickCount++
-        }
-    })
+fun main() {
+    transfer(UserId(5), UserId(4), Amount(100))
 }
+
+@JvmInline
+value class UserId(val value: Int)
+
+@JvmInline
+value class Amount(val amount: Int)
+
+fun transfer(from: UserId, to: UserId, amount: Amount) {}
+
 
 interface MouseListener {
     fun onEnter()
@@ -17,4 +19,3 @@ interface MouseListener {
 }
 
 class Button(private val listener: MouseListener)
-

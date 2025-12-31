@@ -1,4 +1,12 @@
-Note : Chapter 4 devam ediyor...
+Note : Chapter 4 tamamlandı...
+
+[Chapter 1](src/main/kotlin/ch01)
+
+[Chapter 2](src/main/kotlin/ch02)
+
+[Chapter 3](src/main/kotlin/ch03)
+
+[Chapter 4](src/main/kotlin/ch04)
 
 # Chapter 1
 
@@ -29,8 +37,6 @@ performansı koruyabilir.
   odaklanır, NullPointerException gibi yaygın hataları önler, kompakt ve kolay okunabilir code sağlar ve Java ile
   sınırsız entegrasyon sunar.
 
-[Chapter 1](src/main/kotlin/ch01)
-
 # Chapter 2
 
 * Fun keyword’ü bir function declare etmek için kullanılır. Val ve var keyword’leri sırasıyla read-only ve mutable
@@ -60,8 +66,6 @@ performansı koruyabilir.
 * Kotlin’de exception handling Java’ya çok benzerdir, fark olarak Kotlin, bir function’ın fırlatabileceği exception’ları
   declare etmenizi gerektirmez.
 
-[Chapter 2](src/main/kotlin/ch02)
-
 # Chapter 3
 
 Kotlin, Java collection class’larını daha zengin bir API ile geliştirir.
@@ -84,8 +88,6 @@ Kotlin, Java collection class’larını daha zengin bir API ile geliştirir.
   yolunu sağlar.
 
 * Local function’lar, code’unuzu daha temiz yapılandırmanıza ve duplication’ı ortadan kaldırmanıza yardımcı olur.
-
-[Chapter 3](src/main/kotlin/ch03)
 
 # Chapter 4
 
@@ -125,8 +127,6 @@ Kotlin, Java collection class’larını daha zengin bir API ile geliştirir.
 
 * Inline class’lar, çok sayıda kısa ömürlü object allocate edilmesinden kaynaklanan olası performance kayıplarını
   önlerken, programa bir type safety katmanı eklemeni sağlar.
-
-[Chapter 4](src/main/kotlin/ch04)
 
 # Chapter 5
 
