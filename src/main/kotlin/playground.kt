@@ -1,14 +1,22 @@
-import ch04.Person441v2
-import java.io.File
-
 fun main() {
+    println("Minimum password length ${User.MIN_PASSWORD_LENGTH}") // Minimum password length 8
 
+    val guest1 = User.createDefaultUser()
+    println(guest1.nickname) // Guest 1
+
+    val guest2 = User.createDefaultUser()
+    println(guest2.nickname) // Guest 2
 }
 
-interface IdGenerator{
-    fun generate() : Int
-}
+class User(val nickname : String){
+    // class'ın companion (arkadaş) object'i
+    companion object{
+        const val MIN_PASSWORD_LENGTH = 8
+        private var idCounter = 0
 
-object RandomIdGenerator : IdGenerator {
-    override fun generate() = (0..1000).random()
+        fun createDefaultUser():User {
+            idCounter++
+            return User("Guest $idCounter")
+        }
+    }
 }
