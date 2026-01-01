@@ -1,16 +1,16 @@
-import javax.swing.text.View
-import kotlin.math.exp
-
 fun main() {
-    val list = listOf(
-        Person("Alice", 30),
-        Person("Bob", 40)
-    )
-    println(findTheOldest(list)) // Person(name=Bob, age=40)
+    println(getSum(1, 4)) // 5
 }
 
-fun findTheOldest(peoples: List<Person>): Person? {
-    return peoples.maxByOrNull(Person::age)
+fun getSum(x: Int, y: Int): Int {
+    val sum = { x: Int, y: Int ->
+        println("Computing the sum of $x and $y...")
+        x + y
+    }
+
+    return sum(x, y)
 }
 
 data class Person(val name: String, val age: Int)
+
+
