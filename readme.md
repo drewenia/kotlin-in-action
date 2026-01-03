@@ -8,6 +8,8 @@ Note : Chapter 4 tamamlandı...
 
 [Chapter 4](src/main/kotlin/ch04)
 
+[Chapter 5](src/main/kotlin/ch05)
+
 # Chapter 1
 
 Kotlin statically typed’dir ve type inference’i destekler; bu sayede source code’u concise tutarken doğruluk ve
@@ -153,5 +155,3 @@ Kotlin, Java collection class’larını daha zengin bir API ile geliştirir.
 * with standart library function’ı, aynı object üzerinde birden fazla method call etmeyi ve object referansını tekrar
   etmeyi gereksiz kılar. apply, herhangi bir object’i builder-style API kullanarak construct ve initialize etmeyi
   sağlar. also ise bir object ile ek action’lar gerçekleştirmene olanak tanır.
-
-[Source Code -> Chapter 5](src/main/kotlin/ch05)
