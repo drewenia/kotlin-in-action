@@ -1,18 +1,18 @@
 fun main() {
-    alsoExample()
+    val numbers = mapOf(
+        0 to "Zero",
+        1 to "One",
+        2 to "Two"
+    )
+
+    val filterKeys = numbers
+        .filterKeys { it > 1 }
+    println(filterKeys) // {2=Two}
+
+    val mapKey = numbers
+        .mapKeys { "ID: ${it.key}"}
+    println(mapKey) // {ID: 0=Zero, ID: 1=One, ID: 2=Two}
 }
 
-fun alsoExample() {
-    val fruitList = listOf("apple", "banana", "cherry")
-    val upperCase = mutableListOf<String>()
-    val reservedList = fruitList
-        .map { it.uppercase() }
-        .also { upperCase.addAll(it) }
-        .filter { it.length > 5 }
-        .also { println(it) }
-        .reversed()
-
-    println(upperCase)
-    println(reservedList)
-}
+data class Person(val name: String, val age: Int)
 
