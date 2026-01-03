@@ -1,38 +1,18 @@
 fun main() {
-    buildFunctionExample()
+    alsoExample()
 }
 
-fun buildFunctionExample() {
-    val fibonacci = buildList {
-        addAll(listOf(1, 1, 2))
-        add(3)
-        add(index = 0, element = 3)
-    }
+fun alsoExample() {
+    val fruitList = listOf("apple", "banana", "cherry")
+    val upperCase = mutableListOf<String>()
+    val reservedList = fruitList
+        .map { it.uppercase() }
+        .also { upperCase.addAll(it) }
+        .filter { it.length > 5 }
+        .also { println(it) }
+        .reversed()
 
-    println(fibonacci) // [3, 1, 1, 2, 3]
-
-    val shouldAdd = true
-    val fruits = buildSet {
-        add("apple")
-        if (shouldAdd) {
-            addAll(
-                listOf(
-                    "apple",
-                    "banana",
-                    "cherry"
-                )
-            )
-        }
-    }
-    println(fruits) // [apple, banana, cherry]
-
-    val medals = buildMap {
-        put(1, "Gold")
-        putAll(listOf(
-            2 to "Silver",
-            3 to "Bronze"
-        ))
-    }
-    println(medals) // {1=Gold, 2=Silver, 3=Bronze}
+    println(upperCase)
+    println(reservedList)
 }
 
