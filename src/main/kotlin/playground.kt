@@ -1,14 +1,20 @@
 fun main() {
-    val list = listOf("apple", "apricot", "banana", "cantaloupe")
+    val people = listOf(
+        Person("Joe", 22),
+        Person("Mary", 31),
+        Person("Jamie", 22)
+    )
 
-    val groupBy1 = list.groupBy(String::first) { it.uppercase() }
-    println(groupBy1) // {a=[APPLE, APRICOT], b=[BANANA], c=[CANTALOUPE]}
+    val personToAge = people.associateWith { it.age }
+    println(personToAge)
+    // Joe ve Jamie aynı yaştalar
+    // {Person(name=Joe, age=22)=22, Person(name=Mary, age=31)=31, Person(name=Jamie, age=22)=22}
 
-    val groupBy2 = list.groupBy(String::first) { it.length }
-    println(groupBy2) // {a=[5, 7], b=[6], c=[10]}
-
-    val groupBy3 = list.groupBy(String::first) { it.drop(2) }
-    println(groupBy3) // {a=[ple, ricot], b=[nana], c=[ntaloupe]}
+    // key olarak kullanılmaktadır …
+    val ageToPerson = people.associateBy { it.age }
+    println(ageToPerson)
+    // dolayısıyla map’te yalnızca ikincisi görünür.
+    // {22=Person(name=Jamie, age=22), 31=Person(name=Mary, age=31)}
 }
 
 data class Person(val name: String, val age: Int)
