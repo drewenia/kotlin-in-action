@@ -1,16 +1,14 @@
 fun main() {
-    val people = listOf(
-        Person("Derek", 26),
-        Person("Jim", 29),
-        Person("Ari", 21),
-        Person("David", 43),
-    )
+    val list = listOf("apple", "apricot", "banana", "cantaloupe")
 
-    val canBeInClub27 = { p: Person -> p.age <= 27 }
+    val groupBy1 = list.groupBy(String::first) { it.uppercase() }
+    println(groupBy1) // {a=[APPLE, APRICOT], b=[BANANA], c=[CANTALOUPE]}
 
-    val (comeIn, stayOut) = people.partition(canBeInClub27)
-    println(comeIn) // [Person(name=Derek, age=26), Person(name=Ari, age=21)]
-    println(stayOut) // [Person(name=Jim, age=29), Person(name=David, age=43)]
+    val groupBy2 = list.groupBy(String::first) { it.length }
+    println(groupBy2) // {a=[5, 7], b=[6], c=[10]}
+
+    val groupBy3 = list.groupBy(String::first) { it.drop(2) }
+    println(groupBy3) // {a=[ple, ricot], b=[nana], c=[ntaloupe]}
 }
 
 data class Person(val name: String, val age: Int)
