@@ -1,10 +1,7 @@
 fun main() {
-    val names = mutableListOf("Martin", "Samuel")
-    names.replaceAll { it.uppercase() }
-    println(names) // [MARTIN, SAMUEL]
-
-    names.fill("Redacted")
-    println(names) // [Redacted, Redacted]
+    val blankName = " "
+    println(blankName.ifEmpty { "(unnamed)" }) //
+    println(blankName.ifBlank { "(unnamed)" }) // unnamed
 }
 
 data class Person(val name: String, val age: Int)
