@@ -88,12 +88,3 @@ ve problemi manuel bir implementation’a kıyasla çok daha hızlı çözeceksi
 
 Şimdi, collection operation’larını zincirleyen kodun performance’ına daha yakından bakalım. Bir sonraki bölümde, bu tür
 operation’ların hangi farklı yollarla execute edilebildiğini göreceksiniz.
-
-
-
-
-
-
-
-
-
