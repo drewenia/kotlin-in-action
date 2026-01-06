@@ -11,7 +11,7 @@ list oluşturuyorsunuz.
 zip function, kendisine geçirdiğiniz lambda’yı kullanarak iki input’taki her bir element’i aynı index’te eşleştirir;
 aksi hâlde element’lerin pair’lerini oluşturur. Diğer collection’da bir karşılığı olmayan element’ler göz ardı edilir:
 
-![img_11.png](img_11.png)
+![img_11.png](assets/img_11.png)
 
 ```kotlin
 fun main() {

@@ -5,7 +5,7 @@ sequence’in element’lerini nasıl dönüştüreceğini bilen başka bir sequ
 döndürür; bu sonuç bir collection, bir element, bir number ya da initial collection üzerindeki transformation sequence’i
 sonucunda elde edilen herhangi başka bir object olabilir:
 
-![img_12.png](img_12.png)
+![img_12.png](assets/img_12.png)
 
 Intermediate operation’lar her zaman lazy’dir. Terminal operation’ın eksik olduğu bu örneğe bakın:
 
@@ -75,7 +75,7 @@ arasındaki farkı gösterir.
 Eager evaluation, her bir operation’ı tüm collection üzerinde çalıştırır; lazy evaluation ise element’leri tek tek
 process eder.
 
-![img_13.png](img_13.png)
+![img_13.png](assets/img_13.png)
 
 İlk durumda, collection’larla çalıştığınızda, list başka bir list’e dönüştürülür; dolayısıyla map transformation’ı 3 ve
 4 dâhil olmak üzere her bir element’e uygulanır. Sonrasında, predicate’i sağlayan ilk element bulunur: 2’nin karesi.
@@ -93,7 +93,7 @@ gerçekleştirilmesi gereken toplam transformation sayısı açısından farklı
 
 Önce **filter** uygulamak, gerçekleştirilen toplam **transformation** sayısını azaltmaya yardımcı olur.
 
-![img_14.png](img_14.png)
+![img_14.png](assets/img_14.png)
 
 ```kotlin
 fun main() {

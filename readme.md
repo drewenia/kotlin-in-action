@@ -1,4 +1,4 @@
-Note : Chapter 5 tamamlandı...
+Note : Chapter 6 tamamlandı...
 
 [Chapter 1](src/main/kotlin/ch01)
 
@@ -9,6 +9,8 @@ Note : Chapter 5 tamamlandı...
 [Chapter 4](src/main/kotlin/ch04)
 
 [Chapter 5](src/main/kotlin/ch05)
+
+[Chapter 6](src/main/kotlin/ch06)
 
 # Chapter 1
 
@@ -155,3 +157,31 @@ Kotlin, Java collection class’larını daha zengin bir API ile geliştirir.
 * with standart library function’ı, aynı object üzerinde birden fazla method call etmeyi ve object referansını tekrar
   etmeyi gereksiz kılar. apply, herhangi bir object’i builder-style API kullanarak construct ve initialize etmeyi
   sağlar. also ise bir object ile ek action’lar gerçekleştirmene olanak tanır.
+
+# Chapter 6
+
+* Bir collection içindeki element’ler üzerinde manuel olarak iterating yapmak yerine, en yaygın operations, standard
+  library’deki mevcut fonksiyonları kendi lambdas’larınla birleştirerek gerçekleştirilebilir. Kotlin, bu tür
+  fonksiyonların geniş bir çeşitliliğiyle birlikte gelir.
+
+* filter ve map fonksiyonları, collection’ları manipulate etmenin temelini oluşturur ve belirli bir predicate ile
+  eşleşen element’leri çıkarmayı veya element’leri yeni bir forma transform etmeyi kolaylaştırır.
+
+* reduce ve fold operations, bir collection’dan bilgiyi aggregate eder ve bir item collection’ı verildiğinde tek bir
+  value hesaplamana yardımcı olur.
+
+* associate ve groupBy family’lerinden fonksiyonlar, düz list’leri maps’e dönüştürmene yardımcı olur; böylece data’nı
+  kendi kriterlerine göre structure edebilirsin.
+
+* indices ile ilişkili collection’lardaki data için, chunked, windowed ve zip fonksiyonları, collection element’lerinden
+  alt gruplar oluşturmayı veya birden fazla collection’ı birlikte merge etmeyi mümkün kılar.
+
+* Boolean döndüren lambda fonksiyonları olan predicates kullanarak, all, any, none ve diğer sibling fonksiyonlar,
+  belirli invariants’ların collection’ların için geçerli olup olmadığını kontrol etmene olanak tanır.
+
+* Nested collection’larla başa çıkmak için, flatten fonksiyonu nested item’ları çıkarmana yardımcı olabilir; flatMap
+  fonksiyonu ise aynı adımda bir transformation gerçekleştirmeyi bile mümkün kılar.
+
+* Sequences, bir collection üzerindeki birden fazla operation’ı lazily ve intermediate (ara) result'ları tutacak
+  collection’lar oluşturmadan birleştirmeni sağlar; bu da code’unu daha efficient hale getirir. Collection’lar için
+  kullandığın aynı fonksiyonları, sequence’leri manipulate etmek için de kullanabilirsin.
