@@ -1,10 +1,9 @@
 fun main() {
-    val temperatures = listOf(27.7, 29.8, 22.0, 35.5, 19.1)
-    val chunked = temperatures.chunked(2)
-    println(chunked) // [[27.7, 29.8], [22.0, 35.5], [19.1]]
+    val names = listOf("Joe", "Mary", "Jamie")
+    val ages = listOf(22, 31, 31, 44, 0)
+    val countries = listOf("DE", "NL", "US")
 
-    val summed = temperatures.chunked(2) { it.sum() }
-    println(summed) // [57.5, 57.5, 19.1]
+    println(names zip ages zip countries) // [((Joe, 22), DE), ((Mary, 31), NL), ((Jamie, 31), US)]
 }
 
 data class Person(val name: String, val age: Int)
