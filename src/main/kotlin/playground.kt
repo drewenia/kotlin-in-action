@@ -1,10 +1,17 @@
 fun main() {
-    val names = listOf("Joe", "Mary", "Jamie")
-    val ages = listOf(22, 31, 31, 44, 0)
-    val countries = listOf("DE", "NL", "US")
+    val list = listOf(
+        listOf("Apple", "Banana"),
+        listOf("Milk", "Cheese", "Yoghurt"),
+        listOf("Bread")
+    )
 
-    println(names zip ages zip countries) // [((Joe, 22), DE), ((Mary, 31), NL), ((Jamie, 31), US)]
+    println(list) // [[Apple, Banana], [Milk, Cheese, Yoghurt], [Bread]]
+
+    val flatten = list.flatten()
+    println(flatten) // [Apple, Banana, Milk, Cheese, Yoghurt, Bread]
 }
+
+class Book(val title: String, val authors: List<String>)
 
 data class Person(val name: String, val age: Int)
 
