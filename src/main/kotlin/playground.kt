@@ -1,15 +1,16 @@
 import java.io.File
-import kotlin.math.PI
 
-
-fun File.isInsideHiddenDirectory() =
-    generateSequence(this) { it.parentFile }.any { it.isHidden }
+fun strLenSafe(s: String?): Int =
+    if (s != null) s.length else 0
 
 fun main() {
-    val file = File("/Users/svtk/.HiddenDir/a.txt")
-    println(file.isInsideHiddenDirectory())
-    // true
+    val x : String? = null
+    val strLenSafe = strLenSafe(x)
+
+    println(strLenSafe) // 0
+    println(strLenSafe("abc")) // 3
 }
+
 
 data class Person(val name: String, val age: Int)
 
