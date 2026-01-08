@@ -1,25 +1,46 @@
 fun main() {
-    val p1 = Person("Dimitri", "Jemerov")
-    val p2 = Person("Dimitri", "Jemerov")
+    val data = listOf(
+        "Kotlin",
+        "Java",
+        "Scala"
+    )
 
-    println(p1 == null) // false
-    println(p1 == p2) // true
-    println(p1.equals(42)) // false
-}
+    val selectableTextList = SelectableTextList(data)
+    val copyRowAction = CopyRowAction(selectableTextList)
 
-class Person(val firstName: String, val lastName: String) {
-    override fun equals(other: Any?): Boolean {
-        // Type’ı check eder ve eşleşme yoksa false return eder.
-        val otherPerson = other as? Person ?: return false
-
-        // Safe-cast’ten sonra, otherPerson variable’ı Person type’ına smart cast edilir.
-        return otherPerson.firstName == firstName &&
-                otherPerson.lastName == lastName
+    with(copyRowAction) {
+        if (isActionEnabled()) executeCopyRow()
+        else println("Buton pasif : seçili satır yok")
+        // Buton pasif : seçili satır yok
     }
 
-    override fun hashCode(): Int = firstName.hashCode() * 31 + lastName.hashCode()
+    selectableTextList.selectedIndex = 1
+    with(copyRowAction){
+        if (isActionEnabled()){
+            println("Buton aktif islem gerceklestiriliyor")
+            executeCopyRow()
+            println("Basariyla kopyalandi ${selectableTextList.contents[selectableTextList.selectedIndex!!]}")
+            // Buton aktif islem gerceklestiriliyor
+            // Basariyla kopyalandi Java
+        }
+    }
 }
 
+class SelectableTextList(
+    val contents: List<String>,
+    var selectedIndex: Int? = null
+)
+
+class CopyRowAction(val list: SelectableTextList) {
+    fun isActionEnabled(): Boolean = list.selectedIndex != null
+
+    // executeCopyRow, yalnızca isActionEnabled true döndürdüğünde call edilir.
+    fun executeCopyRow() {
+        val index = list.selectedIndex!!
+        val value = list.contents[index]
+        // copy value to clipboard
+    }
+}
 
 // data class Person(val name: String, val age: Int)
 
