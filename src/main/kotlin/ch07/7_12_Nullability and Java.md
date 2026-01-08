@@ -12,7 +12,7 @@ olarak görülür ve @NotNull String ise sadece String’dir:
 Annotation’lı Java type’lar, annotation’lara göre Kotlin’de nullable ve non-nullable type’lar olarak represent edilir.
 Bu type’lar ya explicit olarak null value’ları tutabilir ya da explicit olarak non-nullable’dır.
 
-![img_9.png](img_9.png)
+![img_9.png](assets/img_9.png)
 
 Kotlin, JSR-305 standardından (javax.annotation package’ında), Android’e ait olanlardan (android.support.annotation) ve
 JetBrains tool’ları tarafından desteklenenlerden (org.jetbrains.annotations) gelenler de dahil olmak üzere, nullability

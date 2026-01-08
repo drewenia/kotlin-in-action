@@ -24,7 +24,7 @@ olası null values’ları handle eder.
 Nullable type’lar için extension’lar, receiver’ları için null case’i kendileri handle etmeyi bilir. Bu nedenle safe call
 olmadan access edilebilirler.
 
-![img_8.png](img_8.png)
+![img_8.png](assets/img_8.png)
 
 isNullOrBlank function’ı null için açıkça check yapar ve bu durumda true döner; ardından yalnızca non-nullable bir
 String üzerinde çağrılabilen isBlank’i call eder.

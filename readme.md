@@ -1,4 +1,4 @@
-Note : Chapter 6 tamamlandı...
+Note : Chapter 7 tamamlandı...
 
 [Chapter 1](src/main/kotlin/ch01)
 
@@ -11,6 +11,8 @@ Note : Chapter 6 tamamlandı...
 [Chapter 5](src/main/kotlin/ch05)
 
 [Chapter 6](src/main/kotlin/ch06)
+
+[Chapter 7](src/main/kotlin/ch07)
 
 # Chapter 1
 
@@ -185,3 +187,26 @@ Kotlin, Java collection class’larını daha zengin bir API ile geliştirir.
 * Sequences, bir collection üzerindeki birden fazla operation’ı lazily ve intermediate (ara) result'ları tutacak
   collection’lar oluşturmadan birleştirmeni sağlar; bu da code’unu daha efficient hale getirir. Collection’lar için
   kullandığın aynı fonksiyonları, sequence’leri manipulate etmek için de kullanabilirsin.
+
+# Chapter 7
+
+* Kotlin’in nullable type’lara verdiği destek, olası NullPointerException hatalarını compile time’da tespit eder.
+
+* Regular type’lar, açıkça nullable olarak işaretlenmedikçe, varsayılan olarak non-nullable’dır. Bir type adının
+  sonundaki question mark, onun nullable olduğunu gösterir.
+
+* Kotlin, nullable type’larla kısa ve öz şekilde çalışmak için çeşitli araçlar sağlar.
+
+* Safe call (?.), nullable object’lar üzerinde method çağırmanı ve property’lere erişmeni sağlar.
+
+* Elvis operator (?:), null olabilecek bir expression için varsayılan bir value sağlamayı, execution’dan return etmeyi
+  veya exception fırlatmayı mümkün kılar.
+
+* Non-null assertion (!!) kullanarak compiler’a belirli bir value’nun null olmadığını garanti edebilirsin (ama bu
+  garantiyi bozarsan bir exception almayı beklemelisin).
+
+* let scope function, çağrıldığı object’i bir lambda için parameter hâline getirir. Safe-call operator ile birlikte
+  kullanıldığında, nullable type’lı bir object’i etkin bir şekilde non-nullable type’a dönüştürür.
+
+* as? operator, bir value’yu bir type’a cast etmenin ve farklı bir type’a sahip olduğu durumda durumu handle etmenin
+  kolay bir yolunu sağlar.

@@ -6,7 +6,7 @@ bir type olarak çalışabilirsin.
 Özel annotation’lar içermeyen Java type’lar, Kotlin’de platform type’lar olarak represent edilir. Onları ya nullable ya
 da non-nullable type’lar olarak kullanmayı seçebilirsin.
 
-![img_10.png](img_10.png)
+![img_10.png](assets/img_10.png)
 
 Bu, tıpkı Java’da olduğu gibi, bu type ile gerçekleştirdiğin operations’lar için tüm responsibility’nin sende olduğu
 anlamına gelir. Compiler tüm operations’lara izin verir. Ayrıca normalde non-nullable bir type’ın value’su üzerinde
@@ -94,7 +94,7 @@ platform type’ları belirtmek için kullandığı gösterimdir:
 Java property için type inference kullanılırken, Kotlin Types için inlay hints etkinse IntelliJ IDEA ve Android Studio,
 bir platform type ile çalıştığını gösterir. Exclamation point, bu platform type’ları ilk bakışta fark etmeni sağlar.
 
-![img_11.png](img_11.png)
+![img_11.png](assets/img_11.png)
 
 Bu syntax’ı kendi code’unda kullanamazsın ve genellikle bu exclamation mark bir problemin kaynağıyla bağlantılı
 değildir; bu yüzden çoğu zaman onu görmezden gelebilirsin. Sadece type’ın nullability’sinin unknown olduğunu vurgular.
