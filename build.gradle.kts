@@ -1,3 +1,6 @@
+import org.gradle.kotlin.dsl.testImplementation
+import org.gradle.kotlin.dsl.testRuntimeOnly
+
 plugins {
     kotlin("jvm") version "2.2.20"
     id("org.springframework.boot") version "4.0.0"
@@ -15,7 +18,7 @@ repositories {
 dependencies {
     testImplementation(kotlin("test"))
     implementation("org.springframework.boot:spring-boot-starter-web")
-
+    implementation(kotlin("test"))
 }
 
 tasks.test {
