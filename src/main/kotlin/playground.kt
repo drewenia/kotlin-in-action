@@ -1,11 +1,14 @@
-class DatabaseService{
-    fun saveData(data : String){
-        println("$data saved to database")
-    }
+fun sendEmailTo(email: String) {
+    println("Sending email to : $email")
 }
 
 fun main() {
+    val recipient: String? = null
 
+    // Safe call yok, bu yüzden **nullable type**’a sahiptir.
+    // recipient.let { sendEmailTo(it) }
+    // ERROR: Type mismatch:
+    // inferred type is String? but String was expected
 }
 
 
