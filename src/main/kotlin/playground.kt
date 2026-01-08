@@ -1,13 +1,12 @@
-// Artık T nullable olamaz.
-fun <T : Any> printHashCode(t: T) {
-    println(t.hashCode())
-}
-
 fun main() {
-    // Bu code compile olmaz: non-null bir value beklendiği için null pass edemezsin.
-    printHashCode(null) // null
+    yellAtSafe(Person(null))
+}
+
+fun yellAtSafe(person : Person){
+    println((person.name ?: "Anyone").uppercase())
 }
 
 
+data class Person(val name : String)
 // data class Person(val name: String, val age: Int)
 
