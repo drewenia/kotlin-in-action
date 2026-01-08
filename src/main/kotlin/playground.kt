@@ -1,30 +1,23 @@
-import java.io.File
+fun main() {
+    val p1 = Person("Dimitri", "Jemerov")
+    val p2 = Person("Dimitri", "Jemerov")
 
-class Address(val streetAddress: String, val zipCode: Int, val city: String, val country: String)
-
-class Company(val name: String, val address: Address?)
-
-class Person(val name: String, val company: Company?)
-
-fun printShippingLabel(person: Person) {
-    val address = person.company?.address ?: throw IllegalArgumentException("No address")
-    with(address) {
-        println(streetAddress)
-        println("$zipCode $city, $country")
-    }
+    println(p1 == null) // false
+    println(p1 == p2) // true
+    println(p1.equals(42)) // false
 }
 
-fun main() {
-    val address = Address("Elsestr. 47", 80687, "Munich", "Germany")
-    val jetbrains = Company("JetBrains", address)
-    val person = Person("Dimitri",jetbrains)
-    val person2 = Person("Alexey",null)
+class Person(val firstName: String, val lastName: String) {
+    override fun equals(other: Any?): Boolean {
+        // Type’ı check eder ve eşleşme yoksa false return eder.
+        val otherPerson = other as? Person ?: return false
 
-    printShippingLabel(person)
-    // Elsestr. 47
-    // 80687 Munich, Germany
+        // Safe-cast’ten sonra, otherPerson variable’ı Person type’ına smart cast edilir.
+        return otherPerson.firstName == firstName &&
+                otherPerson.lastName == lastName
+    }
 
-    printShippingLabel(person2) // java.lang.IllegalArgumentException: No address
+    override fun hashCode(): Int = firstName.hashCode() * 31 + lastName.hashCode()
 }
 
 
