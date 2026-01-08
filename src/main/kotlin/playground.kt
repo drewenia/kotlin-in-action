@@ -1,14 +1,11 @@
-fun sendEmailTo(email: String) {
-    println("Sending email to : $email")
+// Artık T nullable olamaz.
+fun <T : Any> printHashCode(t: T) {
+    println(t.hashCode())
 }
 
 fun main() {
-    val recipient: String? = null
-
-    // Safe call yok, bu yüzden **nullable type**’a sahiptir.
-    // recipient.let { sendEmailTo(it) }
-    // ERROR: Type mismatch:
-    // inferred type is String? but String was expected
+    // Bu code compile olmaz: non-null bir value beklendiği için null pass edemezsin.
+    printHashCode(null) // null
 }
 
 
