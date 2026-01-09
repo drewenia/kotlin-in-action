@@ -1,11 +1,13 @@
 fun main() {
-    plus10(11)
+    val db = Database()
+    // Veri tabanından email gelmezse "Email bulunamadı" yazdırır.
+    val email = db.getEmail() ?: "Email bulunamadı"
 }
 
-fun plus10(score: Int?) {
-    val plus10 = score?.plus(10)
-    println("Plus 10 : $plus10") // Plus 10 : 21
+class Database {
+    fun getEmail(): String? = null
 }
+
 
 // data class Person(val name: String, val age: Int)
 
