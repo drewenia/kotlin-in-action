@@ -1,23 +1,35 @@
-class WeatherStation{
-    lateinit var latestReading : String
+data class Person(
+    val name: String,
+    val age: Int? = null
+) {
+    fun isOlderThan(other: Person): Boolean? {
+        if (age == null || other.age == null)
+            return null
+        return age > other.age
+    }
+}
 
-    fun printReading(){
-        if (this::latestReading.isInitialized){
-            println("Latest reading : $latestReading")
-        } else {
-            println("No reading available")
+data class People(
+    val name: String,
+    val age: Int? = null
+) {
+    fun isOlderThan(other: People): Boolean? {
+        return age?.let { currentAge ->
+            other.age?.let { otherAge ->
+                currentAge > otherAge
+            }
         }
     }
 }
 
 fun main() {
-    val ws = WeatherStation()
+    val people1 = People("Dimitri", 16)
+    val people2 = People("Ari",19)
 
-    ws.printReading() // No reading available
-    ws.latestReading = "22°C, sunny"
-    ws.printReading() // Latest reading : 22°C, sunny
+    println(people1.isOlderThan(people2)) // false
+    println(People("Jax").isOlderThan(People("Jamie",21))) // null
 }
 
 
-// data class Person(val name: String, val age: Int)
+
 
