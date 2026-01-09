@@ -1,11 +1,9 @@
+import kotlin.test.assertEquals
+
 fun main() {
-    val animal = Animal()
-
-    // Hiçbir şey olmaz (Crash olmaz çünkü as? null döndürür)
-    makeItBark(animal)
-
-    val animal2 = Dog()
-    makeItBark(animal2) // Woof
+    val answer : String? = "42"
+    val answerToInt = answer!!.toInt()
+    println(answerToInt) // 42
 }
 
 open class Animal
