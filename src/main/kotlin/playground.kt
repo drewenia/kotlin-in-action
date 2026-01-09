@@ -1,9 +1,14 @@
 import kotlin.test.assertEquals
 
 fun main() {
-    val answer : String? = "42"
-    val answerToInt = answer!!.toInt()
-    println(answerToInt) // 42
+    val theName: String? = "Ari"
+    val theNumber: Int? = 7
+
+    val result = theName?.let { name ->
+        theNumber?.let { num -> "Hi $name, $num squared is ${num * num}" }
+    }
+
+    println(result) // Hi Ari, 7 squared is 49
 }
 
 open class Animal
