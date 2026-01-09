@@ -1,20 +1,11 @@
 fun main() {
-
+    plus10(11)
 }
 
-class StringPrinter : StringProcessor {
-    override fun process(value: String){
-        println(value)
-    }
+fun plus10(score: Int?) {
+    val plus10 = score?.plus(10)
+    println("Plus 10 : $plus10") // Plus 10 : 21
 }
-
-class NullableStringPrinter : StringProcessor {
-    override fun process(value : String?){
-        if (value!=null) println(value)
-    }
-}
-
-
 
 // data class Person(val name: String, val age: Int)
 
