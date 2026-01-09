@@ -1,11 +1,21 @@
 fun main() {
-    val db = Database()
-    // Veri tabanından email gelmezse "Email bulunamadı" yazdırır.
-    val email = db.getEmail() ?: "Email bulunamadı"
+    val animal = Animal()
+
+    // Hiçbir şey olmaz (Crash olmaz çünkü as? null döndürür)
+    makeItBark(animal)
+
+    val animal2 = Dog()
+    makeItBark(animal2) // Woof
 }
 
-class Database {
-    fun getEmail(): String? = null
+open class Animal
+
+class Dog : Animal() {
+    fun bark() = println("Woof")
+}
+
+fun makeItBark(animal: Animal) {
+    (animal as? Dog)?.bark()
 }
 
 
