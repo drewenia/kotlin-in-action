@@ -1,19 +1,26 @@
-interface Processor<T> {
-    fun process() : T
-}
+fun readNumbers(text: String): List<Int?> =
+    text.lineSequence()
+        .map { it.toIntOrNull() }
+        .toList()
 
-class NoResultProcessor : Processor<Unit>{
-    // Unit döner, ancak type specification’ı atlıyorsun.
-    override fun process(){
-        val tax = 100 * 0.18
-        println("Tax : $tax")
-    } // Burada explicit bir return’a gerek yok.
+fun addValidNumbers(numbers: List<Int?>) {
+    val validNumbers = numbers.filterNotNull()
+
+    println("Sum of valid numbers : ${validNumbers.sum()}") // Sum of valid numbers : 124
+    println("Invalid numbers : ${numbers.size - validNumbers.size}") // Invalid numbers : 2
 }
 
 fun main() {
-    val nrs = NoResultProcessor()
-    println(nrs.process())
-    // Tax : 18.0
-    // kotlin.Unit
+    val testString = """
+        10
+        twenty
+        30
+        61
+        23
+        sixty
+    """.trimIndent()
+
+    val numbers = readNumbers(testString)
+    addValidNumbers(numbers)
 }
 
