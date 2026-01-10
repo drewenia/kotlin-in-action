@@ -1,18 +1,22 @@
-Note : Chapter 7 tamamlandı...
+Note : Chapter 8 tamamlandı...
 
-[Chapter 1](src/main/kotlin/ch01)
+# Part 1
 
-[Chapter 2](src/main/kotlin/ch02)
+[Chapter 1](src/main/kotlin/Part1/ch01)
 
-[Chapter 3](src/main/kotlin/ch03)
+[Chapter 2](src/main/kotlin/Part1/ch02)
 
-[Chapter 4](src/main/kotlin/ch04)
+[Chapter 3](src/main/kotlin/Part1/ch03)
 
-[Chapter 5](src/main/kotlin/ch05)
+[Chapter 4](src/main/kotlin/Part1/ch04)
 
-[Chapter 6](src/main/kotlin/ch06)
+[Chapter 5](src/main/kotlin/Part1/ch05)
 
-[Chapter 7](src/main/kotlin/ch07)
+[Chapter 6](src/main/kotlin/Part1/ch06)
+
+[Chapter 7](src/main/kotlin/Part1/ch07)
+
+[Chapter 8](src/main/kotlin/Part1/ch08)
 
 # Chapter 1
 
@@ -210,3 +214,31 @@ Kotlin, Java collection class’larını daha zengin bir API ile geliştirir.
 
 * as? operator, bir value’yu bir type’a cast etmenin ve farklı bir type’a sahip olduğu durumda durumu handle etmenin
   kolay bir yolunu sağlar.
+
+# Chapter 8
+
+* basic sayıları represent eden type’lar (örneğin Int), normal class’lar gibi görünür ve davranır ancak genellikle Java
+  primitive type’larına compile edilir. JVM üzerinde birebir karşılığı olmayan Kotlin unsigned number class’ları, inline
+  class’lar aracılığıyla primitive type’lar gibi davranacak ve performans gösterecek şekilde dönüştürülür.
+
+* Nullable primitive type’lar (örneğin Int?) Java’daki boxed primitive type’lara karşılık gelir (örneğin
+  java.lang.Integer).
+
+* Any type, diğer tüm type’ların supertype’ıdır ve Java’daki Object’e benzerdir. Unit, void’in bir karşılığıdır.
+
+* Nothing type, normal şekilde sonlanmayan function’ların dönüş type’ı olarak kullanılır.
+
+* Java’dan gelen type’lar, Kotlin’de platform type’lar olarak yorumlanır ve developer’ın bunları nullable ya da non-null
+  olarak ele almasına izin verir.
+
+* Kotlin, collection’lar için standart Java class’larını kullanır ve bunları read-only ve mutable collection’lar
+  arasındaki bir ayrımla geliştirir.
+
+* Kotlin’de Java class’larını extend ederken veya Java interface’lerini implement ederken, parameter’ların nullability
+  ve mutability özelliklerini dikkatlice göz önünde bulundurmalısınız.
+
+* Kotlin’de array’leri kullanabilirsiniz, ancak genel olarak varsayılan olarak collection’ları tercih etmeniz önerilir.
+
+* Kotlin’in Array class’ı normal bir generic class gibi görünür ancak Java array’ine compile edilir.
+
+* Primitive type’ların array’leri, IntArray gibi özel class’lar tarafından represent edilir.

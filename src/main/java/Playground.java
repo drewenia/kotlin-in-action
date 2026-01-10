@@ -4,9 +4,6 @@ public class Playground {
 
 }
 
-interface StringProcessor{
-    void process(String value);
-}
 
 
 
