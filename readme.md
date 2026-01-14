@@ -1,4 +1,4 @@
-Note : Chapter 8 tamamlandı...
+Note : Chapter 9 tamamlandı...
 
 # Part 1
 
@@ -21,7 +21,6 @@ Note : Chapter 8 tamamlandı...
 # Part 2
 
 [Chapter 9](src/main/kotlin/Part2/ch09)
-
 
 # Chapter 1
 
@@ -247,3 +246,32 @@ Kotlin, Java collection class’larını daha zengin bir API ile geliştirir.
 * Kotlin’in Array class’ı normal bir generic class gibi görünür ancak Java array’ine compile edilir.
 
 * Primitive type’ların array’leri, IntArray gibi özel class’lar tarafından represent edilir.
+
+# Chapter 9
+
+* Kotlin, karşılık gelen isimlere sahip function’lar define ederek bazı standart matematiksel operation’ları overload
+  etmene izin verir. Kendi operator’larını define edemezsin, ancak daha ifade edici bir alternatif olarak infix
+  function’ları kullanabilirsin.
+
+* Herhangi bir object ile comparison operator’larını (==, !=, >, < vb.) kullanabilirsin. Bunlar, equals ve compareTo
+  method’larına yapılan call’lara mapping edilir.
+
+* get, set ve contains isimli function’ları define ederek, class’ını Kotlin collection’larına benzer hale getirmek
+  için `[]` ve `in` operator’larını destekleyebilirsin.
+
+* Range’ler oluşturmak ve collection’lar ile array’ler üzerinde iterate etmek de convention’lar aracılığıyla çalışır.
+
+* Destructuring declaration’lar, tek bir object’i unpack ederek birden fazla variable’ı initialize etmene olanak tanır;
+  bu, bir function’dan birden fazla value döndürmek için kullanışlıdır. data class’lar ile automatically çalışırlar ve
+  componentN isimli function’ları define ederek kendi class’ların için de destekleyebilirsin.
+
+* Delegated property’ler, property value’larının nasıl store edildiğini, initialize edildiğini, access edildiğini ve
+  modify edildiğini kontrol eden logic’i yeniden kullanmana olanak tanır; bu da framework’ler oluşturmak için güçlü bir
+  araçtır.
+
+* lazy standard library function’ı, lazily initialize edilen property’leri implement etmek için kolay bir yol sunar.
+
+* `Delegates.observable` function’ı, property change’lerinin bir observer’ını eklemene olanak tanır.
+
+* Delegated property’ler, herhangi bir map’i property delegate olarak kullanabilir ve variable attribute set’lerine
+  sahip object’lerle çalışmak için esnek bir yol sunar.
