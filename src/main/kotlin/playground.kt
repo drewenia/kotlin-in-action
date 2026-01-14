@@ -1,23 +1,16 @@
-data class Email(val subject: String, val body: String)
+import kotlin.properties.Delegates
 
-data class Person(val name: String) {
-    val emails by lazy { loadEmails(this) }
-}
-
-fun loadEmails(person: Person): List<Email> {
-    println("Load emails for ${person.name}")
-    return listOf(
-        Email("Hey", "How are u?"),
-        Email("Meeting", "At 18.00 a clock")
-    )
+var max: Int by Delegates.vetoable(0) { property, oldValue, newValue ->
+    newValue > oldValue
 }
 
 fun main() {
-    val p = Person("Alice")
-    val emails = p.emails
-    println(emails)
-    // Load emails for Alice
-    // [Email(subject=Hey, body=How are u?), Email(subject=Meeting, body=At 18.00 a clock)]
-    println(emails)
-    // [Email(subject=Hey, body=How are u?), Email(subject=Meeting, body=At 18.00 a clock)]
+    println(max) // 0
+    max = 5
+    println(max) // 5
+    max = 10
+    println(max) // 10
+    max = 9
+    println(max) // 10
 }
+
