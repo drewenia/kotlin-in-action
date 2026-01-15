@@ -22,6 +22,8 @@ Note : Chapter 9 tamamlandı...
 
 [Chapter 9](src/main/kotlin/Part2/ch09)
 
+[Chapter 10](src/main/kotlin/Part2/ch10)
+
 # Chapter 1
 
 Kotlin statically typed’dir ve type inference’i destekler; bu sayede source code’u concise tutarken doğruluk ve
