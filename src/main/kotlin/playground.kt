@@ -1,17 +1,21 @@
+import javax.swing.Action
+
+class Button(val text: String, val onClick: () -> Unit)
+
+fun logOut() {
+    println("Oturum kapatıldı, ana sayfaya yönlendiriliyor...")
+}
+
 fun main() {
-
-}
-
-fun processTheAnswer(f: Function1<Int, Int>) {
-    println(f.invoke(42))
-}
-
-// Function2<Int, Int, Int> ile eşdeğer
-class Adder : (Int, Int) -> Int{
-    override fun invoke(
-        p1: Int,
-        p2: Int
-    ): Int {
-        return p1 + p2
+    val saveButton = Button("Save"){
+        println("Save to database")
+        println("Saved")
     }
+
+    saveButton.onClick()
+    // Save to database
+    // Saved
+
+    val logOutButton = Button("Logout",::logOut)
+    logOutButton.onClick() // Oturum kapatıldı, ana sayfaya yönlendiriliyor...
 }
