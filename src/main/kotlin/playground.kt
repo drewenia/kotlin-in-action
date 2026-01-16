@@ -1,10 +1,12 @@
-inline fun debugLog(block : () -> Unit){
-    println("Log started")
-    block()
-    println("Log done!")
+inline fun createTransformer(
+    multiplier: Int,
+    noinline transformLogic: (Int) -> Int // // Döndürülebilmesi için noinline olmalıdır
+): (Int) -> Int {
+    println("Creating a transformer for multiplier: $multiplier")
+    return transformLogic
 }
+
 fun main() {
-    println("Log started")
-    println("Action started")
-    println("Log done!")
+    val myDoubleTransformer = createTransformer(2) { it * 2 }
+    println(myDoubleTransformer(20))
 }
