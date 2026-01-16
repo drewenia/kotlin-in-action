@@ -1,33 +1,52 @@
-fun <T> Collection<T>.joinToString(
-    seperator: String = ", ",
-    prefix: String = "#",
-    postfix: String = "#",
-    // Nullable bir function type türünde bir parameter declare eder
-    transform: ((T) -> String)? = null
-): String {
-    val result = StringBuilder(prefix)
-    for ((index, element) in this.withIndex()) {
-        if (index > 0) result.append(seperator)
-        // Function’ı call etmek için safe-call syntax’ını kullanır
-        val str = transform?.invoke(element)
-            // Callback’in belirtilmediği durumu handle etmek için Elvis operator’ünü kullanır
-            ?: element.toString()
-        result.append(str)
+data class Person(
+    val firstName: String,
+    val lastName: String,
+    val phoneNumber: String?
+)
+
+class ContactListFilters {
+    var prefix: String = ""
+    var onlyWithPhoneNumber: Boolean = false
+
+    fun getPredicate(): (Person) -> Boolean {
+        // Bir function döndüren bir function declare eder
+        val startsWithPrefix = { p: Person ->
+            p.firstName.startsWith(prefix) ||
+                    p.lastName.startsWith(prefix)
+        }
+        if (!onlyWithPhoneNumber) {
+            // Bir function type türünde bir variable döndürür
+            return startsWithPrefix
+        }
+        // Bu function’dan bir lambda döndürür
+        return { startsWithPrefix(it) && it.phoneNumber != null }
     }
-    result.append(postfix)
-    return result.toString()
 }
 
 fun main() {
-    val letters = listOf("Alpha", "Beta")
+    val contacts = listOf(
+        Person("Dimitry", "Jemerov", "123-4567"),
+        Person("Swetlana", "Isakova", null)
+    )
 
-    // Default conversion function’ı kullanır
-    println(letters.joinToString()) // #Alpha, Beta#
+    val contactListFilters = ContactListFilters()
+    with(contactListFilters) {
+        prefix = "D"
+        onlyWithPhoneNumber = true
+    }
 
-    // Argument olarak bir lambda geçirir
-    println(letters.joinToString { it.lowercase() }) // #alpha, beta#
+    // contacts.filter(contactListFilters.getPredicate())
+    // getPredicate tarafından döndürülen function’ı filter’a argument olarak geçirir
+    val filtered = contacts.filter(contactListFilters.getPredicate())
+    println(filtered) // [Person(firstName=Dimitry, lastName=Jemerov, phoneNumber=123-4567)]
 
-    // Bir lambda dahil olmak üzere birden fazla argument geçirmek için named argument syntax’ını kullanır
-    println(letters.joinToString(seperator = "$", prefix = "∫", postfix = "∫", transform = { it.uppercase() }))
-    // ∫ALPHA$BETA∫
+    val contactListFilters2 = ContactListFilters();
+    with(contactListFilters2){
+        onlyWithPhoneNumber = false
+    }
+
+    val filtered2 = contacts.filter(contactListFilters2.getPredicate())
+    println(filtered2)
+    // [Person(firstName=Dimitry, lastName=Jemerov, phoneNumber=123-4567),
+    // Person(firstName=Swetlana, lastName=Isakova, phoneNumber=null)]
 }
