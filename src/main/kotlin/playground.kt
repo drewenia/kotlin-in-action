@@ -1,12 +1,13 @@
-inline fun createTransformer(
-    multiplier: Int,
-    noinline transformLogic: (Int) -> Int // // Döndürülebilmesi için noinline olmalıdır
-): (Int) -> Int {
-    println("Creating a transformer for multiplier: $multiplier")
-    return transformLogic
-}
+import kotlin.io.path.fileVisitor
+
+data class Person(val name: String, val age: Int)
+
+val people = listOf(
+    Person("Alice", 29),
+    Person("Bob", 31),
+)
 
 fun main() {
-    val myDoubleTransformer = createTransformer(2) { it * 2 }
-    println(myDoubleTransformer(20))
+    val filteredAndMapping = people.filter { it.age > 30 }.map(Person::name)
+    println(filteredAndMapping) // [Bob]
 }
