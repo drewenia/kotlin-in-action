@@ -6,22 +6,13 @@ val people = listOf(
 )
 
 fun lookForAlice(people: List<Person>) {
-    // Lambda expression’ı label’lar
-    people.forEach {
-        // return@label, bu label’a referans verir.
-        if (it.name != "Alice") return@forEach
-        // Bu satır yalnızca return execute edilmediğinde yazdırılır.
-        println("Found Alice")
-    }
+    // Lambda expression yerine anonymous function kullanır
+    people.forEach(fun(person) {
+        if (person.name == "Alice") return // return, en yakın function’a refer eder: **anonymous function**.
+        println("${person.name} is not Alice")
+    })
 }
 
 fun main() {
-    // Bu lambda’nın implicit receiver’ına this@sb ile erişilir.
-    println(StringBuilder().apply sb@{
-        listOf(1, 2, 3).apply { // this, scope’daki en yakın implicit receiver’a referans verir.
-            // Tüm implicit receiver’lara erişilebilir; dıştaki olanlara explicit label’lar aracılığıyla.
-            this@sb.append(this.toString())
-        }
-    })
-    // [1, 2, 3]
+    people.filter(fun(person) = person.age < 30)
 }

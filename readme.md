@@ -1,4 +1,4 @@
-Note : Chapter 9 tamamlandı...
+Note : Chapter 10 tamamlandı...
 
 # Part 1
 
@@ -277,3 +277,25 @@ Kotlin, Java collection class’larını daha zengin bir API ile geliştirir.
 
 * Delegated property’ler, herhangi bir map’i property delegate olarak kullanabilir ve variable attribute set’lerine
   sahip object’lerle çalışmak için esnek bir yol sunar.
+
+# Chapter 10
+
+* Function type’lar, bir function’a reference tutan bir variable, parameter veya function return value declare etmeni
+  sağlar.
+
+* Higher-order fonksiyonlar, başka fonksiyonları argument olarak alır veya onları return eder. Bu tür fonksiyonları, bir
+  function parameter’ın veya return value’nun type’ı olarak bir function type kullanarak oluşturabilirsin.
+
+* Bir inline fonksiyon compile edildiğinde, ona geçirilen bir lambda’nın bytecode’u ile birlikte kendi bytecode’u,
+  calling fonksiyonun kodunun içine doğrudan eklenir. Bu, call işleminin, doğrudan yazılmış benzer bir koda kıyasla
+  hiçbir overhead olmadan gerçekleşmesini sağlar.
+
+* Higher-order fonksiyonlar, tek bir component’in parçaları içinde code reuse’u kolaylaştırır ve güçlü generic ve genel
+  amaçlı library’ler oluşturmanı sağlar.
+
+* Inline fonksiyonlar, enclosing fonksiyondan dönen lambda içindeki return expression’lar olarak yerleştirilen non-local
+  return’leri kullanmana izin verir.
+
+* Anonymous fonksiyonlar, return expression’ların resolve edilmesi için farklı kurallara sahip olan lambda expressions’a
+  alternatif bir sözdizimi sunar. Birden fazla exit point içeren bir code bloğu yazman gerektiğinde onları
+  kullanabilirsin.
