@@ -1,18 +1,11 @@
-data class Person(val name: String, val age: Int)
+import java.security.Provider
+import java.util.ServiceLoader
 
-val people = listOf(
-    Person("Alice", 29),
-    Person("Bob", 31)
-)
 
-fun lookForAlice(people: List<Person>) {
-    // Lambda expression yerine anonymous function kullanır
-    people.forEach(fun(person) {
-        if (person.name == "Alice") return // return, en yakın function’a refer eder: **anonymous function**.
-        println("${person.name} is not Alice")
-    })
+inline fun <reified T : Any> getService(filter: (T) -> Boolean): T? {
+    return ServiceLoader.load(T::class.java).find(filter)
 }
 
 fun main() {
-    people.filter(fun(person) = person.age < 30)
+    getService<FileCompressor> {it.extension == "rar"}?.compress("Document.pdf")
 }
