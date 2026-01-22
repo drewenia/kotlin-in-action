@@ -1,35 +1,18 @@
-open class Animal {
-    fun feed() {
-        println("Animal feeded")
-    }
+open class Animal
+class Cat : Animal()
+
+/* enumerateCats şunu şart koşuyor: "Bana bir fonksiyon ver, bu fonksiyon bir Cat alsın ve bana bir Number versin."
+Tipi: (Cat) -> Number */
+fun enumerateCats(f: (Cat) -> Number){
+    val myCat = Cat()
+    val result = f(myCat)
+    println("$result")
 }
 
-class Herd<out T : Animal>(private val animals: List<T>) {
-    val size: Int get() = animals.size
-    operator fun get(i: Int): T = animals[i]
-}
+// Girdi: Bir Animal nesnesi. Çıktı bir int değeri. sembolik olarak 42 yazdım
+// Yani bu fonksiyonun tipi aslında şudur: (Animal) -> Int.
+fun Animal.getIndex() : Int = 42
 
-fun feedAll(animals: Herd<Animal>) {
-    for (i in 0..<animals.size) {
-        animals[i].feed()
-    }
-}
-
-class Cat : Animal() {
-    fun cleanLitter() {
-        println("Cat litter cleaned")
-    }
-}
-
-fun takeCareOfCats(cats: Herd<Cat>) {
-    for (i in 0..<cats.size) {
-        cats[i].cleanLitter()
-    }
-    feedAll(cats)
-}
-
-
-fun main() {
-    val catHerd = Herd(listOf(Cat(),Cat()))
-    feedAll(catHerd)
+fun main(){
+    enumerateCats (Animal::getIndex)
 }
