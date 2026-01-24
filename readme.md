@@ -1,4 +1,4 @@
-Note : Chapter 10 tamamlandı...
+Note : Chapter 11 tamamlandı...
 
 # Part 1
 
@@ -301,3 +301,39 @@ Kotlin, Java collection class’larını daha zengin bir API ile geliştirir.
 * Anonymous fonksiyonlar, return expression’ların resolve edilmesi için farklı kurallara sahip olan lambda expressions’a
   alternatif bir sözdizimi sunar. Birden fazla exit point içeren bir code bloğu yazman gerektiğinde onları
   kullanabilirsin.
+
+# Chapter 11
+
+* Kotlin’in generics’leri Java’dakilere oldukça benzerdir: generic function veya class’ı aynı şekilde declare edersiniz.
+
+* Java’da olduğu gibi, generic type’lar için type argument’lar yalnızca compile time’da mevcuttur.
+
+* Type argument’lara sahip type’ları `is` operator’ü ile birlikte kullanamazsınız, çünkü type argument’lar runtime’da
+  silinir.
+
+* Inline function’ların type parameter’ları reified olarak işaretlenebilir; bu da onları runtime’da is check’ler yapmak
+  ve java.lang.Class instance’larını elde etmek için kullanmanıza olanak tanır.
+
+* Variance, aynı base class’a sahip ve farklı type argument’lara sahip iki generic type’tan birinin, type
+  argument’lardan biri diğerinin subtype’ı olduğunda, diğerinin subtype’ı mı yoksa supertype’ı mı olduğunu belirtmenin
+  bir yoludur.
+
+* Bir class’ı, type parameter yalnızca out pozisyonlarında kullanılıyorsa, o type parameter üzerinde covariant olarak
+  declare edebilirsiniz.
+
+* Contravariant case’ler için bunun tersi geçerlidir: bir class’ı, type parameter yalnızca in pozisyonlarında
+  kullanılıyorsa, o type parameter üzerinde contravariant olarak declare edebilirsiniz.
+
+* Kotlin’teki read-only List interface’i covariant olarak declare edilmiştir; bu da List<String>’in List<Any>’nin bir
+  subtype’ı olduğu anlamına gelir.
+
+* Function interface’i, ilk type parameter üzerinde contravariant ve ikinci type parameter üzerinde covariant olarak
+  declare edilmiştir; bu da (Animal) -> Int’in (Cat) -> Number’ın bir subtype’ı olmasını sağlar.
+
+* Kotlin, variance’ı hem bir generic class’ın tamamı için (declaration-site variance) hem de generic type’ın belirli bir
+  kullanımı için (use-site variance) belirtmenize olanak tanır.
+
+* Star-projection syntax’ı, exact type argument’lar bilinmediğinde ya da önemsiz olduğunda kullanılabilir.
+
+* Type alias’lar, type’lar için alternatif ya da kısaltılmış adlar sağlamanıza olanak tanır. Compile time’da underlying
+  type’larına expand edilirler.
